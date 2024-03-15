@@ -20,6 +20,15 @@ pipeline {
                 // Your test steps here
                 sh 'npm test'
             }
+            post {
+                // Post-build actions
+                success {
+                    echo 'Tests passed successfully!'
+                }
+                failure {
+                    echo 'Tests failed! Please check your code.'
+                }
+            }
         }
     }
 }
