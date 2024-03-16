@@ -9,7 +9,7 @@ pipeline {
     environment {
         GCP_PROJECT_ID = 'frostyyeti'
         GCP_REGION = 'us-central1'
-        SERVICE_ACCOUNT_KEY = credentials('65dadb94-fdb7-42c0-bc62-71c03b6c40f9')
+        SERVICE_ACCOUNT_KEY = credentials('97a3a886-d138-40db-ad09-4baf0d93304a')
     }
 
     stages {
