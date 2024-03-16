@@ -695,4 +695,6 @@ Congratulations! We have successfully developed a working decentralized crowdfun
 This tutorial was created by [Soumyajit Deb](https://github.com/hyp3r5pace) and [Sayan Kar](https://github.com/SayanKar). You can reach out to [Soumyajit Deb](https://www.linkedin.com/in/soumyajitdeb/) and [Sayan Kar](https://www.linkedin.com/in/sayan-kar-/) for any query regarding the tutorial.  
   
 # References
-[Deploy a smart contract on Avalanche using Remix and Metamask](https://docs.avax.network/build/tutorials/smart-contracts/deploy-a-smart-contract-on-avalanche-using-remix-and-metamask/)
+[Deploy a smart contract on Avalanche using Remix and Metamask](https://docs.avax.network/build/tutorials/smart-contracts/deploy-a-smart-contract-on-avalanche-using-remix-and-metamask/) 
+
+
