@@ -14,7 +14,7 @@ variable "service_account_key" {
 }
 
 provider "google" {
-  credentials = file(base64decode(var.service_account_key))
+  credentials = var.service_account_key
   project = var.project_id
   region  = var.region
 }
