@@ -6,6 +6,12 @@ pipeline {
         terraform "Terraform"
     }
 
+    environment {
+        GCP_PROJECT_ID = 'frostyyeti'
+        GCP_REGION = 'us-central1'
+        SERVICE_ACCOUNT_KEY = credentials('65dadb94-fdb7-42c0-bc62-71c03b6c40f9')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -40,7 +46,10 @@ pipeline {
                 script {
                     dir('terraform') {
                         sh "terraform init"
-                        sh "terraform apply --auto-approve"
+                        sh 'terraform apply -auto-approve \
+                    -var="project_id=${GCP_PROJECT_ID}" \
+                    -var="region=${GCP_REGION}" \
+                    -var="service_account_key=${SERVICE_ACCOUNT_KEY}"'
                     }
                 }
             }

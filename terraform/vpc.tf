@@ -9,7 +9,12 @@ variable "region" {
   description = "region"
 }
 
+variable "service_account_key" {
+  description = "Base64-encoded Google service account key file"
+}
+
 provider "google" {
+  credentials = file(base64decode(var.service_account_key))
   project = var.project_id
   region  = var.region
 }
