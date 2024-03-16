@@ -41,21 +41,19 @@ pipeline {
         //         }
         //     }
         // }
-        stages {
         stage('Terraform Init') {
-            steps {
-                sh 'terraform init'
+                steps {
+                    sh 'terraform init'
+                }
             }
-        }
 
-        stage('Terraform Apply') {
-            steps {
-                sh 'terraform apply -auto-approve \
-                    -var="project_id=${GCP_PROJECT_ID}" \
-                    -var="region=${GCP_REGION}" \
-                    -var="service_account_key=${SERVICE_ACCOUNT_KEY}"'
+            stage('Terraform Apply') {
+                steps {
+                    sh 'terraform apply -auto-approve \
+                        -var="project_id=${GCP_PROJECT_ID}" \
+                        -var="region=${GCP_REGION}" \
+                        -var="service_account_key=${SERVICE_ACCOUNT_KEY}"'
+                }
             }
-        }
-    }
     }
 }
