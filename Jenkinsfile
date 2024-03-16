@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout your repository
-                git 'https://github.com/BhartiyaYeti/FrostiYeti-V2.git'
+                git branch: 'main', credentialsId: '86bb5f5e-fc4e-44e2-b107-9c83f1c56653', url: 'https://github.com/BhartiyaYeti/FrostiYeti-V2'
             }
         }
         stage('Install Dependencies') {
