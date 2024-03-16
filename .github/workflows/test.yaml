@@ -29,5 +29,5 @@ trigger-jenkins:
     needs: test
     steps:
       - name: Trigger Jenkins Job
-        run: |
+         run: |
           curl -X POST "http://34.31.84.247/job/test-job/build?token=${{ secrets.JENKINS_TOKEN }}"
