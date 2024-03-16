@@ -22,3 +22,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm test
+
+    trigger-jenkins:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Trigger Jenkins Job
+        run: |
+          curl -X POST "http://34.31.84.247/job/test-job/build?token=${{ secrets.JENKINS_TOKEN }}"
