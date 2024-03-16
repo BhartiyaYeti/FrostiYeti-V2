@@ -14,22 +14,17 @@ jobs:
         node-version: [14.x, 16.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm test
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm test
 
-    
-trigger-jenkins:
-  runs-on: ubuntu-latest
-  needs: test
-  steps:
-    - name: Trigger Jenkins Job
-      uses: wei/http-request-action@v2
-      with:
-        url: http://34.31.84.247/job/test-job/build
-        method: POST
-        headers: '{"Authorization": "Basic ${{ secrets.JENKINS_TOKEN }}" }'
+  trigger-jenkins:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Trigger Jenkins Job
+        run: curl -X POST "http://34.31.84.247/job/test-job/build?token=${{ secrets.JENKINS_TOKEN }}"
