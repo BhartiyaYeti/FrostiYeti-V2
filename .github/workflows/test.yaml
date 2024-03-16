@@ -23,8 +23,8 @@ jobs:
       - run: npm test
 
   trigger-jenkins-pipeline:
-  runs-on: ubuntu-latest
-  needs: [test]
-  steps:
-    - name: Trigger Jenkins Pipeline
-      run: curl -X POST "http://34.31.84.247/job/test-pipeline/buildWithParameters?token=${{ secrets.JENKINS_TOKEN }}"
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Trigger Jenkins Pipeline
+        run: curl -X POST "http://34.31.84.247/job/test-pipeline/buildWithParameters?token=${{ secrets.JENKINS_TOKEN }}"
