@@ -4,12 +4,14 @@ pipeline {
     tools {
         nodejs "NodeJS"
         terraform "Terraform"
+        docker "Docker"
     }
 
     environment {
         GCP_PROJECT_ID = 'frostyyeti'
         GCP_REGION = 'us-central1'
         SERVICE_ACCOUNT_KEY = credentials('97a3a886-d138-40db-ad09-4baf0d93304a')
+        IMAGE_NAME = "frostyyeti-react"
     }
 
     stages {
@@ -24,6 +26,28 @@ pipeline {
         stage('Echo Line') {
             steps {
                 sh 'echo "Hello, world!"'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    echo 'Building Docker image...'
+                    // Build the Docker image using the Dockerfile in the current directory
+                    sh 'docker build -t ${IMAGE_NAME}:latest .'
+                    sh 'docker tag ${IMAGE_NAME} gcr.io/${GCP_PROJECT_ID}/${IMAGE_NAME}:latest'
+                    sh 'gcloud auth configure-docker'
+                    sh 'docker push gcr.io/${GCP_PROJECT_ID}/${IMAGE_NAME}:latest'
+                    // // Log in to GCR using the service account credentials
+                    // withCredentials([file(credentialsId: "${GCP_PROJECT_ID}_artifacts", variable: 'GCR_CRED')]) {
+                    //     sh 'cat "${GCR_CRED}" | docker login -u _json_key_base64 --password-stdin https://"${REPO_LOCATION}"-docker.pkg.dev'
+                    //     // Push the Docker image to GCR
+                    //     sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
+                    //     // Log out from GCR
+                    //     sh 'docker logout https://"${REPO_LOCATION}"-docker.pkg.dev'
+                    // }
+                    echo 'Docker image pushed to GCR.'
+                }
             }
         }
 
