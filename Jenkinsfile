@@ -4,7 +4,7 @@ pipeline {
     tools {
         nodejs "NodeJS"
         terraform "Terraform"
-        docker "Docker"
+        dockerTool "Docker"
     }
 
     environment {
