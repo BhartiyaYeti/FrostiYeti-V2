@@ -27,4 +27,4 @@ jobs:
     needs: [test]
     steps:
       - name: Trigger Jenkins Pipeline
-        run: curl -X POST "http://34.31.84.247/job/test-pipeline/buildWithParameters?token=${{ secrets.JENKINS_TOKEN }}" 
+        run: curl -X POST "http://104.198.220.47/job/test-pipeline/buildWithParameters?token=${{ secrets.JENKINS_TOKEN }}" 
