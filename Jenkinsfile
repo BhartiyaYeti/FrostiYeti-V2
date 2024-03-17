@@ -19,6 +19,15 @@ pipeline {
                 git branch: 'main', credentialsId: '86bb5f5e-fc4e-44e2-b107-9c83f1c56653', url: 'https://github.com/BhartiyaYeti/FrostiYeti-V2'
             }
         }
+
+      
+        stage('Echo Line') {
+            steps {
+                sh 'echo "Hello, world!"'
+            }
+        }
+
+        
         // stage('Install Dependencies') {
         //     steps {
         //         // Install Node.js and npm
