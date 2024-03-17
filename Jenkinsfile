@@ -30,6 +30,9 @@ pipeline {
         }
 
         stage('Build Docker Image') {
+            agent {
+                docker { image 'node:20.11.1-alpine3.19' }
+            }
             steps {
                 script {
                     echo 'Building Docker image...'
