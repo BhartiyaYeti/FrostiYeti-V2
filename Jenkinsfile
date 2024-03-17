@@ -22,7 +22,6 @@ pipeline {
             }
         }
 
-      
         stage('Echo Line') {
             steps {
                 sh 'echo "Hello, world!"'
