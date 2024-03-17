@@ -1,5 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            // Specify the Docker image to use for the agent
+            image 'docker:20.10.9'
+            // Specify additional options if needed, like environment variables
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     
     tools {
         nodejs "NodeJS"
@@ -30,9 +37,7 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            agent {
-                docker { image 'node:20.11.1-alpine3.19' }
-            }
+            
             steps {
                 script {
                     echo 'Building Docker image...'
