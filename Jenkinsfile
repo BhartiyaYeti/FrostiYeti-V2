@@ -9,7 +9,7 @@ pipeline {
     environment {
         GCP_PROJECT_ID = 'frostyyeti'
         GCP_REGION = 'us-central1'
-        SERVICE_ACCOUNT_KEY = credentials('97a3a886-d138-40db-ad09-4baf0d93304a')
+        SERVICE_ACCOUNT_KEY = '97a3a886-d138-40db-ad09-4baf0d93304a'
         GCR_REPO = 'gcr.io/frostyyeti/frostyyeti-react'
         IMAGE_NAME = "frostyyeti-react"
     }
