@@ -9,9 +9,10 @@ pipeline {
     environment {
         GCP_PROJECT_ID = 'frostyyeti'
         GCP_REGION = 'us-central1'
-        SERVICE_ACCOUNT_KEY = '97a3a886-d138-40db-ad09-4baf0d93304a'
+        SERVICE_ACCOUNT_KEY = credentials('97a3a886-d138-40db-ad09-4baf0d93304a')
         GCR_REPO = 'gcr.io/frostyyeti/frostyyeti-react'
         IMAGE_NAME = "frostyyeti-react"
+        GCR_KEY = credentials('2635f794-4e7a-4987-8656-1b259cfab20e')
     }
 
     stages {
@@ -62,7 +63,7 @@ pipeline {
             steps {
                 script {
                     docker.build(IMAGE_NAME)
-                    docker.withRegistry('https://gcr.io', SERVICE_ACCOUNT_KEY) {
+                    docker.withRegistry('https://gcr.io', GCR_KEY) {
                         docker.image(GCR_REPO).push()
                     }
                 }
