@@ -1,11 +1,11 @@
 pipeline {
     agent {
-        
+        dockerContainer{
             // Specify the Docker image to use for the agent
             image 'docker:20.10.9'
             // Specify additional options if needed, like environment variables
             args '-v /var/run/docker.sock:/var/run/docker.sock'
-    
+        }
     }
     
     tools {
