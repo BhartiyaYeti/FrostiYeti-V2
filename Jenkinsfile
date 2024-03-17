@@ -62,10 +62,16 @@ pipeline {
             
             steps {
                 script {
-                    docker.build(IMAGE_NAME)
-                    docker.withRegistry('https://gcr.io', 'gcr:${SERVICE_ACCOUNT_KEY}') {
-                        docker.image(GCR_REPO).push()
-                    }
+                    // docker.build(IMAGE_NAME)
+                    // docker.withRegistry('https://gcr.io', 'gcr:${SERVICE_ACCOUNT_KEY}') {
+                    //     docker.image(GCR_REPO).push()
+                    // }
+                    sh """
+                    gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}
+                    gcloud auth configure-docker
+                    docker build -t frostyyeti-react .
+                    docker push gcr.io/frostyyeti/frostyyeti-react
+                    """
                 }
             }
         
