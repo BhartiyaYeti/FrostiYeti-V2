@@ -31,11 +31,13 @@ pipeline {
         stage('Build Docker Image') {
             
             steps {
-                docker {
-                    // Use the official Jenkins agent Docker image
-                    image 'jenkins/inbound-agent:latest'
-                    // Mount Docker socket inside the container to access the host's Docker daemon
-                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                agent {
+                    docker {
+                        // Use the official Jenkins agent Docker image
+                        image 'jenkins/inbound-agent:latest'
+                        // Mount Docker socket inside the container to access the host's Docker daemon
+                        args '-v /var/run/docker.sock:/var/run/docker.sock'
+                    }
                 }
                 script {
                     echo 'Building Docker image...'
