@@ -11,7 +11,7 @@
     namespace: "frostyyeti-namespace"
   tasks:
     - name: Authenticate with GCP
-      community.general.gcp_auth:
+      community.google.gcp_auth:
         service_account_file: "{{ service_account_key }}"
       register: auth_result
 
