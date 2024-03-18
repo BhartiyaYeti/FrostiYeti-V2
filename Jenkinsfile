@@ -62,7 +62,7 @@ pipeline {
                 script {
                     dir('ansible') {
                         // Run the playbook
-                        sh 'ansible-playbook playbook.yml'
+                        sh 'ansible-playbook playbook.yaml'
                     }
                 }
             }
