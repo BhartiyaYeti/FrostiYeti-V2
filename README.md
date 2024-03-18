@@ -4,7 +4,7 @@ Avalanche is a low cost, high-speed blockchain network on which we can deploy sm
   
 # Prerequisites
 - Familiarity with ReactJS and Solidity.  
-- Should've completed [Deploy a Smart Contract on Avalanche using Remix and MetaMask](https://learn.figment.io/tutorials/deploy-a-smart-contract-on-avalanche-using-remix-and-metamask) tutorial  
+- Should've completed [Deploy a Smart Contract on Avalanche using Remix and MetaMask](https://learn.figment.io/tutorials/deploy-a-smart-contract-on-avalanche-using-remix-and-metamask) tutorial.
   
 # Requirements
 - [Node.js](https://nodejs.org/en/download/releases/) v10.18.0+  
