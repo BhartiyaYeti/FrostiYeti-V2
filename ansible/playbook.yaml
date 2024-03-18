@@ -12,9 +12,13 @@
   tasks:
     # - name: Ensure GKE cluster is running
     #   command: gcloud container clusters get-credentials {{ cluster_name }} --zone {{ cluster_zone }} --project {{ project_id }}
+    - name: Authenticate with GCP
+      community.general.gcp_auth:
+        service_account_file: "{{ service_account_key }}"
+      register: auth_result
 
     - name: Create a k8s namespace  
-      k8s:    
+      community.kubernetes.k8s:    
         state: present    
         definition:      
           apiVersion: v1      
@@ -23,7 +27,7 @@
             name: "{{ namespace }}"
 
     - name: Deploy React App
-      k8s:
+      community.kubernetes.k8s:
         definition:
           apiVersion: apps/v1
           kind: Deployment
@@ -50,7 +54,7 @@
         state: present
 
     - name: Create a Service to expose the app
-      k8s:
+      community.kubernetes.k8s:
         definition:
           apiVersion: v1
           kind: Service
