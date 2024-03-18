@@ -1,0 +1,21 @@
+name: Trigger Jenkins Job
+
+on:
+ push:
+    branches:
+      - main
+
+jobs:
+ trigger-jenkins-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Jenkins Job and Return Result
+        uses: mickeygoussetorg/trigger-jenkins-job@v1
+        with:
+          jenkins-server: "http://104.198.220.47/" # URL of the Jenkins server
+          jenkins-job: "test-pipeline" # The name of the Jenkins job to run
+          jenkins-username: "user" # Username for accessing Jenkins
+          jenkins-pat: "116a3570939359d2992b040a6fa99e39ae" # Personal Access Token for accessing Jenkins
+          poll-time: 10 # How often (seconds) to poll the Jenkins server for results
+          timeout-value: 600 # How long (seconds) to poll before timing out the action
+          verbose: true # Enable extra logging

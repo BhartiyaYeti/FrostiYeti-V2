@@ -26,14 +26,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test]
     steps:
-      - name: Get Jenkins Crumb
-        id: get_crumb
-        run: |
-          CRUMB=$(curl -s 'http://104.198.220.47/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
-          echo "::set-output name=crumb::$CRUMB"
-
       - name: Trigger Jenkins Pipeline
-        run: |
-          CRUMB=${{ steps.get_crumb.outputs.crumb }}
-          curl -X POST "http://104.198.220.47/job/test-pipeline/buildWithParameters?token=${{ secrets.JENKINS_TOKEN }}" \
-          -H "$CRUMB"
+        run: curl -X POST "http://104.198.220.47/job/test-pipeline/buildWithParameters?token=${{ secrets.JENKINS_TOKEN }}" 
