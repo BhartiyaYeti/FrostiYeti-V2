@@ -62,7 +62,7 @@ pipeline {
                 script {
                     dir('ansible') {
                         // Run the playbook
-                        sh 'ansible-playbook playbook.yaml -i inventory.yaml --ask-become-pass'
+                        sh 'ansible-playbook playbook.yaml -i inventory.yaml'
                     }
                 }
             }

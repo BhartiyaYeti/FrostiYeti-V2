@@ -2,8 +2,6 @@
   hosts: localhost
   connection: local
   gather_facts: true
-  become: true
-  become_method: sudo
   vars:
     project_id: "frostyyeti"
     cluster_name: "frostyyeti-gke"
@@ -11,8 +9,8 @@
     app_name: "frostyyeti-crowdfund"
     image_name: "gcr.io/frostyyeti/frostyyeti-react:latest"
   tasks:
-    - name: Ensure GKE cluster is running
-      command: gcloud container clusters get-credentials {{ cluster_name }} --zone {{ cluster_zone }} --project {{ project_id }}
+    # - name: Ensure GKE cluster is running
+    #   command: gcloud container clusters get-credentials {{ cluster_name }} --zone {{ cluster_zone }} --project {{ project_id }}
 
     - name: Create a k8s namespace  
       k8s:    
