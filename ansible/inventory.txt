@@ -1,0 +1,5 @@
+[gke_cluster]
+frostyyeti-gke ansible_connection=kubectl
+
+[local]
+localhost ansible_connection=local

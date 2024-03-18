@@ -62,7 +62,7 @@ pipeline {
                 script {
                     dir('ansible') {
                         // Run the playbook
-                        sh 'ansible-playbook playbook.yaml --extra-vars "service_account_key=${SERVICE_ACCOUNT_KEY}"'
+                        sh 'ansible-playbook -i inventory.txt playbook1.yaml'
                     }
                 }
             }
