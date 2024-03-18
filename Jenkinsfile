@@ -56,5 +56,16 @@ pipeline {
             }
            
         }
+
+        stage('Deploy App to GKE') {
+            steps {
+                script {
+                    dir('ansible') {
+                        // Run the playbook
+                        sh 'ansible-playbook sample-playbook.yml'
+                    }
+                }
+            }
+        }
     }
 }
