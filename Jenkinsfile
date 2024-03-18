@@ -4,7 +4,6 @@ pipeline {
     tools {
         nodejs "NodeJS"
         terraform "Terraform"
-        ansible "Ansible"
     }
 
     environment {
