@@ -1,0 +1,54 @@
+- name: Deploy React App to GKE
+  hosts: all
+  become: yes
+  vars:
+    project_id: "frostyyeti"
+    cluster_name: "frostyyeti-gke"
+    app_name: "frostyyeti-crowdfund"
+    image_name: "gcr.io/frostyyeti/frostyyeti-react:latest"
+  tasks:
+    - name: Ensure GKE cluster is running
+      command: gcloud container clusters get-credentials {{ cluster_name }} --zone YOUR_CLUSTER_ZONE --project {{ project_id }}
+
+    - name: Deploy React App
+      k8s:
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: {{ app_name }}
+            labels:
+              app: {{ app_name }}
+          spec:
+            replicas: 3
+            selector:
+              matchLabels:
+                app: {{ app_name }}
+            template:
+              metadata:
+                labels:
+                 app: {{ app_name }}
+              spec:
+                containers:
+                - name: {{ app_name }}
+                  image: "{{ image_name }}"
+                  ports:
+                  - containerPort: 80
+        state: present
+
+    - name: Create a Service to expose the app
+      k8s:
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: {{ app_name }}
+          spec:
+            selector:
+              app: {{ app_name }}
+            ports:
+              - protocol: TCP
+                port: 80
+                targetPort: 80
+            type: LoadBalancer
+        state: present
