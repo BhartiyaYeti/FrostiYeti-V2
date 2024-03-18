@@ -1,5 +1,5 @@
 - name: Deploy React App to GKE
-  hosts: all
+  hosts: localhost
   become: yes
   vars:
     project_id: "frostyyeti"
