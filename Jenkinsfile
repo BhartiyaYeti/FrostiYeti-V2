@@ -61,8 +61,10 @@ pipeline {
             steps {
                 script {
                     dir('ansible') {
+                        sh "gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}"
+                        sh "gcloud config set project ${GCP_PROJECT_ID}"
                         // Run the playbook
-                        sh 'ansible-playbook -i inventory.txt playbook1.yaml'
+                        sh 'ansible-playbook playbook.yaml'
                     }
                 }
             }

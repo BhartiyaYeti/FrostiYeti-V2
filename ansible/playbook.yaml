@@ -10,11 +10,6 @@
     image_name: "gcr.io/frostyyeti/frostyyeti-react:latest"
     namespace: "frostyyeti-namespace"
   tasks:
-    - name: Authenticate with GCP
-      community.google.gcp_auth:
-        service_account_file: "{{ service_account_key }}"
-      register: auth_result
-
     - name: Create a k8s namespace  
       community.kubernetes.k8s:    
         state: present    
