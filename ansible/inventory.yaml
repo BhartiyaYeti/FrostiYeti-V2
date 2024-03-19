@@ -1,0 +1,15 @@
+plugin: gcp_compute
+projects:
+  - frostyyeti
+auth_kind: serviceaccount
+service_account_file: /home/aratrika_mukherjee26/jenkins-sa.json
+scopes:
+  - https://www.googleapis.com/auth/compute
+filters: []
+groups:
+  k8s_nodes: "'gke' in name"
+keyed_groups:
+  - prefix: gcp
+    key: labels
+compose:
+  ansible_host: networkInterfaces[0].accessConfigs[0].natIP
