@@ -35,7 +35,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="SERVER" elementType="Argument">
                 <stringProp name="Argument.name">SERVER</stringProp>
-                <stringProp name="Argument.value">darshhh.vercel.app</stringProp>
+                <stringProp name="Argument.value">google.com</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
