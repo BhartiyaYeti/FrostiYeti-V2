@@ -1,6 +1,5 @@
 - name: Deploy React App to GKE
-  hosts: localhost
-  connection: local
+  hosts: all
   gather_facts: true
   vars:
     project_id: "frostyyeti"
