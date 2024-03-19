@@ -11,7 +11,8 @@
     ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Create a k8s namespace  
-      community.kubernetes.k8s:    
+      community.kubernetes.k8s:  
+        kubeconfig: "~/.kube/config"  
         state: present    
         definition:      
           apiVersion: v1      
@@ -21,6 +22,7 @@
 
     - name: Deploy React App
       community.kubernetes.k8s:
+        kubeconfig: "~/.kube/config"
         definition:
           apiVersion: apps/v1
           kind: Deployment
@@ -48,6 +50,7 @@
 
     - name: Create a Service to expose the app
       community.kubernetes.k8s:
+        kubeconfig: "~/.kube/config"
         definition:
           apiVersion: v1
           kind: Service
