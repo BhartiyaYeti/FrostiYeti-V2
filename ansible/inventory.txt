@@ -1,5 +1,5 @@
 [gke_cluster]
-frostyyeti-gke ansible_host=34.133.125.29 ansible_ssh_user=keerthi ansible_ssh_pass=keerthi
+frostyyeti-gke ansible_host=34.133.125.29 ansible_user=keerthi ansible_ssh_pass=keerthi
 
 [local]
 localhost ansible_connection=local
