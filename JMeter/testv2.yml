@@ -1,0 +1,4 @@
+execution:
+  scenario:
+    script: FrostyYeti-Test-Plan.jmx
+    # Additional parameters for the JMeter executor can be specified here
