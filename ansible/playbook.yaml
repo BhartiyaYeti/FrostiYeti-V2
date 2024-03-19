@@ -9,6 +9,7 @@
     app_name: "frostyyeti-crowdfund"
     image_name: "gcr.io/frostyyeti/frostyyeti-react:latest"
     namespace: "frostyyeti-namespace"
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Create a k8s namespace  
       community.kubernetes.k8s:    
