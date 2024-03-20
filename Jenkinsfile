@@ -57,18 +57,18 @@ pipeline {
            
         }
 
-        // stage('Deploy App to GKE') {
-        //     steps {
-        //         script {
-        //             dir('ansible') {
-        //                 sh "gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}"
-        //                 sh "gcloud config set project ${GCP_PROJECT_ID}"
-        //                 // Run the playbook
-        //                 // sh 'sudo cat /home/aratrika_mukherjee26/pkey'
-        //                 sh 'ansible-playbook -i inventory.txt playbook.yaml --extra-vars "ansible_password=keerthi"'
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Deploy App to GKE') {
+            steps {
+                script {
+                    dir('ansible') {
+                        // sh "gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}"
+                        // sh "gcloud config set project ${GCP_PROJECT_ID}"
+                        // Run the playbook
+                        // sh 'sudo cat /home/aratrika_mukherjee26/pkey'
+                        sh 'ansible-playbook playbook.yaml'
+                    }
+                }
+            }
+        }
     }
 }
