@@ -1,5 +1,5 @@
 [gke_cluster]
-frostyyeti-gke ansible_host=34.133.125.29 ansible_user=keerthi
+frostyyeti-gke ansible_host=34.133.125.29 ansible_user=bitnami
 
 [gke_cluster:vars]
 ansible_password=keerthi
