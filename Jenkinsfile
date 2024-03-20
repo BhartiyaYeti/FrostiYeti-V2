@@ -42,33 +42,33 @@ pipeline {
         
         // }
 
-        // stage('Create GKE cluster with Terraform') {
-        //      steps {
-        //         script {
-        //             dir('terraform') {
-        //                 sh "terraform init"
-        //                 sh 'terraform apply -auto-approve \
-        //             -var="project_id=${GCP_PROJECT_ID}" \
-        //             -var="region=${GCP_REGION}" \
-        //             -var="service_account_key=${SERVICE_ACCOUNT_KEY}"'
-        //             }
-        //         }
-        //     }
-           
-        // }
-
-        stage('Deploy App to GKE') {
-            steps {
+        stage('Create GKE cluster with Terraform') {
+             steps {
                 script {
-                    dir('ansible') {
-                        sh "gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}"
-                        sh "gcloud config set project ${GCP_PROJECT_ID}"
-                        // Run the playbook
-                        // sh 'sudo cat /home/aratrika_mukherjee26/pkey'
-                        sh 'ansible-playbook -i inventory.txt playbook.yaml --extra-vars "ansible_password=keerthi"'
+                    dir('terraform') {
+                        sh "terraform init"
+                        sh 'terraform apply -auto-approve \
+                    -var="project_id=${GCP_PROJECT_ID}" \
+                    -var="region=${GCP_REGION}" \
+                    -var="service_account_key=${SERVICE_ACCOUNT_KEY}"'
                     }
                 }
             }
+           
         }
+
+        // stage('Deploy App to GKE') {
+        //     steps {
+        //         script {
+        //             dir('ansible') {
+        //                 sh "gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}"
+        //                 sh "gcloud config set project ${GCP_PROJECT_ID}"
+        //                 // Run the playbook
+        //                 // sh 'sudo cat /home/aratrika_mukherjee26/pkey'
+        //                 sh 'ansible-playbook -i inventory.txt playbook.yaml --extra-vars "ansible_password=keerthi"'
+        //             }
+        //         }
+        //     }
+        // }
     }
 }

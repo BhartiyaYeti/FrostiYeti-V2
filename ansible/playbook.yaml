@@ -1,5 +1,5 @@
 - name: Deploy React App to GKE
-  hosts: all
+  hosts: localhost
   gather_facts: true
   vars:
     project_id: "frostyyeti"
@@ -10,6 +10,9 @@
     namespace: "frostyyeti-namespace"
     ansible_python_interpreter: /usr/bin/python3
   tasks:
+    - name: Authenticate with GKE cluster
+      shell: gcloud container clusters get-credentials frostyyeti-gke --zone us-central1 --project frostyyeti
+
     - name: Create a k8s namespace  
       community.kubernetes.k8s:   
         state: present    
@@ -53,6 +56,7 @@
           kind: Service
           metadata:
             name: "{{ app_name }}-service"
+            namespace: "{{ namespace }}"
           spec:
             selector:
               app: "{{ app_name }}"
