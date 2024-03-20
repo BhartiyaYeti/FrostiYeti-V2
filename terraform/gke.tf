@@ -63,9 +63,3 @@ resource "google_container_node_pool" "primary_nodes" {
     }
   }
 }
-
-resource "google_project_iam_member" "gke_service_account_image_pull" {
-  project = var.project_id
-  role    = "roles/storage.objectViewer"
-  member  = "serviceAccount:${var.service_account_key}"
-}
