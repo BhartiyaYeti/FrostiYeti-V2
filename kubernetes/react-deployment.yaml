@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frostyyeti-crowdfund
+  namespace: frostyyeti-ns1
   labels:
     app: frostyyeti-crowdfund
 spec:
@@ -16,7 +17,6 @@ spec:
     spec:
       containers:
         - name: frostyyeti-crowdfund
-          namespace: frostyyeti-ns1
           image: gcr.io/frostyyeti/frostyyeti-react:latest
           imagePullPolicy: Always
           ports:
