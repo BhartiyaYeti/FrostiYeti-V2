@@ -12,14 +12,14 @@
   tasks:
     - name: Run kubectl command to create namespace
       ansible.builtin.shell:
-        cmd: kubectl create namespace frostyyeti-ns
+        cmd: kubectl create namespace frostyyeti-ns1
     - name: Apply deployment
       ansible.builtin.shell:
         cmd: kubectl apply -f react-deployment.yaml
       args:
-        chdir: ./kubernetes
+        chdir: ../kubernetes
     - name: Apply deployment
       ansible.builtin.shell:
         cmd: kubectl apply -f react-service.yaml
       args:
-        chdir: ./kubernetes
+        chdir: ../kubernetes

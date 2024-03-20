@@ -8,7 +8,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: frostyyeti-crowdfund
-    namespace: frostyyeti-namespace
+    namespace: frostyyeti-ns1
   minReplicas: 3
   maxReplicas: 6
   metrics:
