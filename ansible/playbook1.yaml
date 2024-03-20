@@ -1,6 +1,6 @@
 ---
 - name: Configure GKE Cluster
-  hosts: gke_cluster
+  hosts: localhost
   gather_facts: no
   vars:
     project_id: "frostyyeti"
@@ -10,12 +10,16 @@
     image_name: "gcr.io/frostyyeti/frostyyeti-react:latest"
     namespace: "frostyyeti-namespace"
   tasks:
-    - name: Install kubectl
-      become: yes
-      apt:
-        name: kubectl
-        state: present
-
-    - name: Configure kubectl
-      become: yes
-      shell: gcloud container clusters get-credentials {{ cluster_name }} --zone {{ cluster_zone }} --project {{ project_id }}
+    - name: Run kubectl command to create namespace
+      ansible.builtin.shell:
+        cmd: kubectl create namespace frostyyeti-namespace
+    - name: Apply deployment
+      ansible.builtin.shell:
+        cmd: kubectl apply -f react-deployment.yaml
+      args:
+        chdir: ./kubernetes
+    - name: Apply deployment
+      ansible.builtin.shell:
+        cmd: kubectl apply -f react-service.yaml
+      args:
+        chdir: ./kubernetes

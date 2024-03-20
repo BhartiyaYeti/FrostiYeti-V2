@@ -1,24 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react
+  name: frostyyeti-crowdfund
   labels:
-    app: react
+    app: frostyyeti-crowdfund
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: react
+      app: frostyyeti-crowdfund
   template:
     metadata:
       labels:
-        app: react
+        app: frostyyeti-crowdfund
     spec:
       containers:
-        - name: react
+        - name: frostyyeti-crowdfund
+          namespace: frostyyeti-namespace
           image: gcr.io/frostyyeti/frostyyeti-react:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 3000
               protocol: TCP
       restartPolicy: Always

@@ -67,10 +67,8 @@ pipeline {
                         // sh 'sudo cat /home/aratrika_mukherjee26/pkey'
                         // sh 'sudo apt-get install google-cloud-sdk-config-connector google-cloud-sdk-spanner-migration-tool google-cloud-sdk-nomos google-cloud-sdk-istioctl google-cloud-sdk-enterprise-certificate-proxy google-cloud-sdk-kpt google-cloud-sdk google-cloud-sdk-anthos-auth google-cloud-sdk-app-engine-go google-cloud-sdk-minikube google-cloud-sdk-pubsub-emulator kubectl google-cloud-sdk-datastore-emulator google-cloud-sdk-cbt google-cloud-sdk-app-engine-java google-cloud-sdk-skaffold google-cloud-sdk-app-engine-grpc google-cloud-sdk-bigtable-emulator google-cloud-sdk-gke-gcloud-auth-plugin google-cloud-sdk-terraform-tools google-cloud-cli-docker-credential-gcr google-cloud-sdk-kubectl-oidc google-cloud-sdk-log-streaming google-cloud-sdk-cloud-build-local google-cloud-sdk-cloud-run-proxy google-cloud-sdk-harbourbridge google-cloud-sdk-package-go-module google-cloud-sdk-firestore-emulator google-cloud-sdk-app-engine-python-extras google-cloud-sdk-spanner-emulator google-cloud-sdk-local-extract google-cloud-sdk-app-engine-python'
                         // sh 'ansible-playbook playbook.yaml'
-                        sh 'sudo su - aratrika_mukherjee26'
-                        sh 'cd /home'
-                        sh 'cd /bitnami/jenkins/home/workspace/test-pipeline/ansible'
-                        sh 'ansible-playbook playbook.yaml'
+                        
+                        sh 'ansible-playbook playbook1.yaml'
                     }
                 }
             }
