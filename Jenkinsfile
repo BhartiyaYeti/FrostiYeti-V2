@@ -28,19 +28,19 @@ pipeline {
             }
         }
 
-        // stage('Build Docker Image') { 
-        //     steps {
-        //         script {
-        //             sh """
-        //             gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}
-        //             gcloud auth configure-docker
-        //             docker build -t frostyyeti-react .
-        //             docker push gcr.io/frostyyeti/frostyyeti-react
-        //             """
-        //         }
-        //     }
+        stage('Build Docker Image') { 
+            steps {
+                script {
+                    sh """
+                    gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}
+                    gcloud auth configure-docker
+                    docker build -t frostyyeti-react .
+                    docker push gcr.io/frostyyeti/frostyyeti-react
+                    """
+                }
+            }
         
-        // }
+        }
 
         stage('Create GKE cluster with Terraform') {
              steps {
