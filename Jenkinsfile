@@ -12,6 +12,7 @@ pipeline {
         SERVICE_ACCOUNT_KEY = credentials('97a3a886-d138-40db-ad09-4baf0d93304a')
         GCR_REPO = 'gcr.io/frostyyeti/frostyyeti-react'
         IMAGE_NAME = "frostyyeti-react"
+        ANSIBLE_PASSWORD = credentials('keerthi')
     }
 
     stages {
@@ -65,7 +66,7 @@ pipeline {
                         sh "gcloud config set project ${GCP_PROJECT_ID}"
                         // Run the playbook
                         // sh 'sudo cat /home/aratrika_mukherjee26/pkey'
-                        sh 'ansible-playbook -i inventory.txt playbook.yaml'
+                        sh 'ansible-playbook -i inventory.txt playbook.yaml --extra-vars "ansible_password=$ANSIBLE_PASSWORD"'
                     }
                 }
             }
