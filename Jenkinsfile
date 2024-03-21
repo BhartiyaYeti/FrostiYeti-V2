@@ -51,7 +51,7 @@ pipeline {
            
         }
 
-        stage('Deploy App to GKE') {
+        stage('Deploy App to GKE using Anisble') {
             steps {
                 script {
                     dir('ansible') {
