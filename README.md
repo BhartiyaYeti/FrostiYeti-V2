@@ -8,13 +8,15 @@ Avalanche is a low cost, high-speed blockchain network on which we can deploy sm
   
 # Requirements
 - [Node.js](https://nodejs.org/en/download/releases/) v10.18.0+  
-- [Metamask extension](https://metamask.io/download/) on your browser  
+- [Metamask extension](https://metamask.io/download/) on your browser
+
+# DevOps Architecture
+
+![Image displaying DevOps_architecture](https://github.com/BhartiyaYeti/FrostiYeti-V2/blob/2d3ba027caf2200f6cbef6837f39d1edeb32e9e5/Devops%20Architecture.png) 
+
+The above image displays the architecture of the CI/CD.
   
 # Implementing the smart contract  
-
-![Image displaying contract_architecture](https://github.com/figment-networks/learn-tutorials/raw/master/assets/create-a-decentralized-kickstarter-05.jpg) 
-
-The above image displays the architecture of the smart contract.
 
 Now we will build the smart contract of our application. Let's start by making a contract named **Crowdfunding**.
 
