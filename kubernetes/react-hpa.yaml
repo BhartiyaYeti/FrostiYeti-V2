@@ -2,13 +2,12 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: react-hpa
-  namespace: default
+  namespace: frostyyeti-ns1
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: frostyyeti-crowdfund
-    namespace: frostyyeti-ns1
   minReplicas: 3
   maxReplicas: 6
   metrics:
