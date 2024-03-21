@@ -15,8 +15,6 @@ spec:
       labels:
         app: frostyyeti-crowdfund
     spec:
-      imagePullSecrets:
-        - name: gcr-json-key
       containers:
         - name: frostyyeti-crowdfund
           image: gcr.io/frostyyeti/frostyyeti-react:latest
