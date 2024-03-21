@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frostyyeti-crowdfund
-  namespace: frostyyeti-ns1
+  namespace: frostyyeti-ns
   labels:
     app: frostyyeti-crowdfund
 spec:

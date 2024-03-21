@@ -12,12 +12,12 @@
   tasks:
     - name: Check if namespace exists
       ansible.builtin.shell:
-        cmd: kubectl get namespace frostyyeti-ns1
+        cmd: kubectl get namespace frostyyeti-ns
       register: namespace_check
       ignore_errors: yes
     - name: Create namespace if it doesn't exist
       ansible.builtin.command:
-        cmd: kubectl create namespace frostyyeti-ns1
+        cmd: kubectl create namespace frostyyeti-ns
       when: namespace_check.rc != 0
     - name: Apply deployment
       ansible.builtin.shell:

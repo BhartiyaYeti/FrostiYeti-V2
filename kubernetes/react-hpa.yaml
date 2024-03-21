@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: react-hpa
-  namespace: frostyyeti-ns1
+  namespace: frostyyeti-ns
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
