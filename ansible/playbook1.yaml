@@ -10,16 +10,27 @@
     image_name: "gcr.io/frostyyeti/frostyyeti-react:latest"
     namespace: "frostyyeti-namespace"
   tasks:
-    - name: Run kubectl command to create namespace
+    - name: Check if namespace exists
       ansible.builtin.shell:
+        cmd: kubectl get namespace frostyyeti-ns1
+      register: namespace_check
+      ignore_errors: yes
+    - name: Create namespace if it doesn't exist
+      ansible.builtin.command:
         cmd: kubectl create namespace frostyyeti-ns1
+      when: namespace_check.rc != 0
     - name: Apply deployment
       ansible.builtin.shell:
         cmd: kubectl apply -f react-deployment.yaml
       args:
         chdir: ../kubernetes
-    - name: Apply deployment
+    - name: Apply Service
       ansible.builtin.shell:
         cmd: kubectl apply -f react-service.yaml
+      args:
+        chdir: ../kubernetes
+    - name: Apply Scaling
+      ansible.builtin.shell:
+        cmd: kubectl apply -f react-hpa.yaml
       args:
         chdir: ../kubernetes

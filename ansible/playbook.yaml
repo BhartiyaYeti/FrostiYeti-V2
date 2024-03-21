@@ -42,6 +42,8 @@
                 labels:
                  app: "{{ app_name }}"
               spec:
+                imagePullSecrets:
+                - name: gcr-json-key
                 containers:
                 - name: "{{ app_name }}"
                   image: "{{ image_name }}"
