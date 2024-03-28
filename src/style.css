@@ -1,6 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Erica+One");
+/* @import url("https://fonts.googleapis.com/css?family=Erica+One");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 html,
 body,
@@ -19,7 +24,8 @@ a {
 .app {
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #040d12;
+  padding-block: 15px;
 }
 
 /* Navbar Css */
@@ -27,15 +33,17 @@ a {
 .navbar {
   height: 66px;
   width: 100%;
-  border-bottom: 0.1rem solid #dcdedd;
+  /* border-bottom: 0.1rem solid #f5f7f8; */
+  border-bottom: 0.1rem solid #dcdedd28;
   display: flex;
+  padding-inline: 40px;
 }
 
 .leftNavbarContainer {
   width: 30%;
   display: flex;
   align-items: center;
-  padding-left: 15px;
+  /* padding-left: 15px; */
 }
 
 .rightNavbarContainer {
@@ -52,24 +60,27 @@ a {
   justify-content: center;
   align-items: center;
   font-size: 28px;
-  font-family: "Erica One";
+  font-family: "Montserrat", sans-serif;
   letter-spacing: 1px;
-  color: #05ce78;
+  color: #c3edc0;
+  font-weight: bold;
 }
 
 .navItem {
   width: fit-content;
   padding: 0px 15px;
   letter-spacing: 0.5px;
-  color: #282828;
+  color: #f5f7f8;
   font-size: 15px;
   cursor: pointer;
+  font-family: "Montserrat", sans-serif;
 }
 
 .navItem:hover {
-  color: #037362;
+  color: #c3edc0;
   letter-spacing: 0.5px;
-  font: "Open Sans";
+  /* text-decoration: underline; */
+  scale: 1.03;
 }
 
 /* Category Css */
@@ -77,25 +88,26 @@ a {
 .category {
   height: 60px;
   width: 100%;
+  padding-inline: 20px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  border-bottom: 0.1rem solid #dcdedd;
+  border-bottom: 0.1rem solid #dcdedd28;
 }
 
 .categoryItem {
-  color: #656969;
+  color: #f5f7f8;
   font-size: 17px;
   line-height: 2.4rem;
   margin: 10px;
   position: relative;
   cursor: pointer;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .categoryItem:hover,
 .categoryItem:focus {
-  color: #034752;
+  color: #edebfc;
 }
 
 .categoryItem::after {
@@ -106,7 +118,7 @@ a {
   height: 0.1rem;
   position: absolute;
   text-decoration: underline;
-  background-color: #034752;
+  background-color: #c3edc0;
   opacity: 0;
   transition: opacity 300ms, transform 300ms;
 }
@@ -126,7 +138,7 @@ a {
   align-items: center;
   font-size: 20px;
   font-weight: 700;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
 }
 
 .siteStats {
@@ -183,7 +195,7 @@ a {
 .statItemValue {
   color: #037362;
   font-size: 30px;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
 
@@ -220,7 +232,7 @@ a {
 
 .featuredHeading {
   color: #656969;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-size: 13px;
   font-weight: 900;
   margin: 0px 0px 10px 0px;
@@ -244,7 +256,7 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 20px 0px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .featuredProjectHeading:hover {
@@ -271,7 +283,7 @@ a {
 .featuredProjectAuthor {
   margin: 15px 0px;
   color: #656969;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-size: 15px;
   width: 100%;
   white-space: nowrap;
@@ -294,7 +306,7 @@ a {
 
 .recommendationHeading {
   color: #656969;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-size: 13px;
   font-weight: 900;
   margin: 0px 0px 0px 7%;
@@ -326,7 +338,7 @@ a {
 
 .rcmdCardHeading {
   color: #282828;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-size: 15px;
   letter-spacing: 0.1px;
   max-height: 25px;
@@ -345,7 +357,7 @@ a {
 
 .rcmdCardFundedPercentage {
   color: #037362;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   letter-spacing: 0.1px;
   max-height: 25px;
@@ -358,7 +370,7 @@ a {
 
 .rcmdCardAuthor {
   color: #656969;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-size: 13px;
   letter-spacing: 0.1px;
   max-height: 25px;
@@ -403,7 +415,7 @@ a {
 
 .recentUploadsHeading {
   color: #656969;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-size: 13px;
   font-weight: 900;
   margin: 20px 0px;
@@ -445,7 +457,7 @@ a {
 }
 
 .cardTitle {
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   padding: 12px 0px;
   font-size: 19px;
   font-weight: 500;
@@ -480,7 +492,7 @@ a {
 .cardAuthor {
   margin: 25px 0px;
   color: #656969;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-size: 15px;
   width: 100%;
   white-space: nowrap;
@@ -581,7 +593,7 @@ a {
 label {
   color: #3d3d3d;
   display: block;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 5px;
@@ -620,7 +632,7 @@ textarea {
 h1 {
   border-bottom: 1px solid white;
   color: #3d3d3d;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 30px;
   font-weight: 600;
   line-height: 24px;
@@ -648,7 +660,7 @@ form {
 
 .error {
   color: red;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 12px;
   height: 30px;
 }
@@ -656,7 +668,7 @@ form {
 .submitButton {
   background-color: #6976d9;
   color: white;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   margin: 20px 0px;
   cursor: pointer;
@@ -683,7 +695,7 @@ form {
 }
 
 .typing {
-  font-family: "Inconsolata", Consolas, monospace;
+  font-family: "Montserrat", sans-serif;
   font-weight: 800;
   font-size: 4em;
   color: #05ce78;
@@ -772,7 +784,7 @@ form {
 .discoverHeading {
   height: 40px;
   font-size: 20px;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   color: #282828;
   margin: 10px 12%;
   /* display: flex;
@@ -810,7 +822,7 @@ form {
 
 .projectHeading h1 {
   font-size: 200%;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   color: #282828;
 }
 
@@ -917,7 +929,7 @@ form {
 
 .aboutContainer {
   font-size: 18px;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   color: #282828;
   font-weight: 500;
 }
@@ -990,7 +1002,7 @@ form {
   margin: 0 10%;
   font-size: 28px;
   color: #282828;
-  font-family: "Open Sans";
+  font-family: "Montserrat", sans-serif;
   font-weight: 800;
   margin-top: 40px;
 }
