@@ -173,10 +173,10 @@ function CreateProjectComponent(props) {
         <label>Funding Goal (AVAX)</label>
         <input
           type="number"
-          step="1"
+          step="any"
           name="goal"
           placeholder="Enter the funding goal"
-          min="1"
+          // min="0.001"
           required
           onChange={handleChange}
         />

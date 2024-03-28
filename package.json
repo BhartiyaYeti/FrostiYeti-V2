@@ -27,11 +27,11 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-}, 
+  },
   "eslintConfig": {
-    "extends": [ 
+    "extends": [
       "react-app",
-      "react-app/jest" 
+      "react-app/jest"
     ]
   },
   "browserslist": {
