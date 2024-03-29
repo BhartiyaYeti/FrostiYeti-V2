@@ -3,7 +3,6 @@ import CategoryComponent from "./CategoryComponent";
 import ScrollShowbarComponent from "./ScrollShowbarComponent";
 import { Link } from "react-router-dom";
 import dummyPic from "../assets/pg1.jpg";
-
 export default function HomeComponent(props) {
   const PRECISION = 10 ** 18;
   const [stats, setStats] = useState({
@@ -133,7 +132,7 @@ export default function HomeComponent(props) {
 
         {featuredRcmd.length !== 0 ? (
           <>
-            <div className="mt-10 p-10 bg-[#040d12]">
+            <div className="mt-10 p-10 bg-[#18191A]">
               <h1 className="text-[#f5f7f8] text-2xl font-bold mb-10">
                 Project Of the Day!🌟
               </h1>
@@ -141,7 +140,7 @@ export default function HomeComponent(props) {
                 <Link to="/project" state={{ index: featuredRcmd[0].index }}>
                   <div>
                     <img
-                      className="bg-white bg-no-repeat bg-contain bg-center h-[400px] rounded-xl"
+                      className="bg-white bg-no-repeat bg-contain bg-center h-[350px] rounded-xl"
                       src={
                         featuredRcmd[0].cid
                           ? `url(${"https://" + featuredRcmd[0].cid})`

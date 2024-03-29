@@ -2,46 +2,18 @@ import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function FooterComponent(props) {
   return (
-    <div className="footer">
-      <div className="footerContainer">
-        <div className="trademarkSection">Chain4Scholars © 2022</div>
-        <div className="externalLinks">
-          <div className="linkWrapper">
-            <div className="icon">
-              <a
-                href="https://twitter.com/crypto_gaijin"
-                className="twitter-icon"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FaTwitter />
-              </a>
-            </div>
-            <div className="icon">
-              <a
-                href="https://github.com/hyp3r5pace"
-                className="github-icon"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FaGithub />
-              </a>
-            </div>
-            <div className="icon">
-              <div className="insta-icon-bg">
-                <a
-                  href="https://www.instagram.com/sayan.kar2000/"
-                  className="insta-icon"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FaInstagram />
-                </a>
-              </div>
-            </div>
+    <footer class="bg-black">
+      <div class="max-w-screen-xl px-4 py-3 mx-auto sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <div class="flex justify-center text-[#c3edc0] sm:justify-start">
+            <h1>&copy; {new Date().getFullYear()} Chain4Scholrs </h1>
           </div>
+
+          <p class="mt-4 text-sm text-center text-gray-400 lg:text-right lg:mt-0 hover:cursor-pointer">
+            T&C &nbsp; Privacy & Policy &nbsp; Developers
+          </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

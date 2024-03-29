@@ -5,7 +5,7 @@ export default function NavbarComponent(props) {
   return (
     <div className="navbar flex justify-between">
       <nav className="leftNavbarContainer">
-        <div className="centerNavbarContainer">Chain4Scholars</div>
+        <div className="centerNavbarContainer ">Chain4Scholars</div>
       </nav>
       <div className="rightNavbarContainer">
         <div className="navItem" onClick={() => navigate("/")}>

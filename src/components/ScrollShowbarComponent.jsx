@@ -39,7 +39,7 @@ export default function ScrollShowbarComponent(props) {
     });
   };
   return (
-    <div className="recentUploads  bg-[#040d12]">
+    <div className="recentUploads  bg-[#18191A]">
       <div className="recentUploadsHeader">
         <div className="recentUploadsHeading">{props.heading}</div>
         {props.recentUploads.length ? (
