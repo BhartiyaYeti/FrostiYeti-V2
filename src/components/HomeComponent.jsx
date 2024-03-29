@@ -63,28 +63,40 @@ export default function HomeComponent(props) {
   const renderRecommendations = (val) => {
     return val.map((project, index) => {
       return (
-        <div className="recommendationCard" key={index}>
-          <Link to="/project" state={{ index: project.index }}>
-            <div
-              className="rcmdCardImg"
-              style={{
-                backgroundImage: project.cid
-                  ? `url(${"https://" + project.cid})`
-                  : dummyPic,
-              }}
-            ></div>
-          </Link>
-          <div className="rcmdCardDetails">
-            <div className="rcmdCardHeading">
-              <Link to="/project" state={{ index: project.index }}>
-                {project.projectName}
-              </Link>
+        <div className="">
+          <div
+            className="recommendationCard"
+            key={index}
+            style={
+              index % 2 === 0
+                ? { background: "#76ABAE" }
+                : { background: "#EEEEEE" }
+            }
+          >
+            <Link to="/project" state={{ index: project.index }}>
+              <img
+                className="rcmdCardImg"
+                src={
+                  project.cid ? `url(${"https://" + project.cid})` : dummyPic
+                }
+                alt="Project_Image"
+              />
+            </Link>
+            <div className="rcmdCardDetails mt-3">
+              <div className="font-bold text-xl">
+                <Link to="/project" state={{ index: project.index }}>
+                  {project.projectName}
+                </Link>
+              </div>
+              <div className="rcmdCardFundedPercentage">
+                {((project.amountRaised / project.fundingGoal) * 100).toFixed(
+                  2
+                ) + "% Funded"}
+              </div>
+              <div className="rcmdCardAuthor">
+                {"By " + project.creatorName}
+              </div>
             </div>
-            <div className="rcmdCardFundedPercentage">
-              {((project.amountRaised / project.fundingGoal) * 100).toFixed(2) +
-                "% Funded"}
-            </div>
-            <div className="rcmdCardAuthor">{"By " + project.creatorName}</div>
           </div>
         </div>
       );
@@ -101,70 +113,78 @@ export default function HomeComponent(props) {
       {/* siteStats */}
       <div className="siteStats">
         <div className="tagLine">
-          Creative work shows us what’s possible.
-          <br></br>
-          Help fund it here.
+          Empowering every student's dream, one fundraiser at a time.
         </div>
-        <div className="smallHeading">TILL THIS DAY</div>
-        <div className="stats">
-          <div className="statItem">
-            <div className="statItemValue">{stats.projects}</div>
-            <div className="statItemTag">projects </div>
-          </div>
-          <div className="statItem">
-            <div className="statItemValue">{stats.fundings + " AVAX"}</div>
-            <div className="statItemTag">towards creative work</div>
-          </div>
-          <div className="statItem">
-            <div className="statItemValue">{stats.contributors}</div>
-            <div className="statItemTag">backings</div>
-          </div>
-        </div>
-      </div>
 
-      {featuredRcmd.length !== 0 ? (
-        <div className="suggestions">
-          <div className="suggLeftContainer">
-            <div className="featuredCard">
-              <div className="featuredHeading">FEATURED PROJECT</div>
-              <Link to="/project" state={{ index: featuredRcmd[0].index }}>
-                <div
-                  className="featuredCardProjectImg"
-                  style={{
-                    backgroundImage: featuredRcmd[0].cid
-                      ? `url(${"https://" + featuredRcmd[0].cid})`
-                      : dummyPic,
-                  }}
-                ></div>
-              </Link>
-              <div className="featuredProjectHeading">
-                <Link to="/project" state={{ index: featuredRcmd[0].index }}>
-                  {featuredRcmd[0].projectName}
-                </Link>
-              </div>
-              <div className="featuredProjectDescription">
-                {featuredRcmd[0].projectDescription}
-              </div>
-              <div className="featuredProjectAuthor">
-                {"By " + featuredRcmd[0].creatorName}
-              </div>
-            </div>
+        <div className="flex gap-20 justify-center">
+          <div className="bg-[#76ABAE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-lg hover:scale-105 hover:cursor-pointer">
+            <h1 className="text-3xl font-bold">{stats.projects}</h1>
+            <h3 className="text-xl">Projects🔯</h3>
           </div>
-          <div className="suggRightContainer">
-            <div className="recommendationList">
-              <div className="recommendationHeading">RECOMMENDED FOR YOU</div>
-              {renderRecommendations(featuredRcmd.slice(1, 4))}
-            </div>
+          <div className="bg-red-400 text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-lg hover:scale-105 hover:cursor-pointer">
+            <h1 className="text-3xl font-bold">{stats.fundings + " AVAX"}</h1>
+            <h3 className="text-xl">Funds Raised💵</h3>
+          </div>{" "}
+          <div className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-lg hover:scale-105 hover:cursor-pointer">
+            <h1 className="text-3xl font-bold">{stats.contributors}</h1>
+            <h3 className="text-xl">contributors👤</h3>
           </div>
         </div>
-      ) : (
-        <div className="noProjects">No projects found</div>
-      )}
-      <ScrollShowbarComponent
-        recentUploads={recentUploads}
-        heading={"RECENT UPLOADS"}
-        emptyMessage={"No recent uploads"}
-      />
+
+        {featuredRcmd.length !== 0 ? (
+          <>
+            <div className="mt-10 p-10 bg-[#040d12]">
+              <h1 className="text-[#f5f7f8] text-2xl font-bold mb-10">
+                Project Of the Day!🌟
+              </h1>
+              <div className="flex gap-10">
+                <Link to="/project" state={{ index: featuredRcmd[0].index }}>
+                  <div>
+                    <img
+                      className="bg-white bg-no-repeat bg-contain bg-center h-[400px] rounded-xl"
+                      src={
+                        featuredRcmd[0].cid
+                          ? `url(${"https://" + featuredRcmd[0].cid})`
+                          : dummyPic
+                      }
+                      alt="Project_Photo"
+                    />
+                  </div>
+                </Link>
+                <div>
+                  <div className="text-[#f5f7f8] uppercase text-3xl pt-10">
+                    <Link
+                      to="/project"
+                      state={{ index: featuredRcmd[0].index }}
+                    >
+                      {featuredRcmd[0].projectName}
+                    </Link>
+                  </div>
+                  <div className="text-[#f5f7f8] uppercase text-xl ">
+                    {featuredRcmd[0].projectDescription}
+                  </div>
+                  <div className="text-[#f5f7f8] uppercase text-md ">
+                    {"By " + featuredRcmd[0].creatorName}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h1 className="text-[#f5f7f8] text-2xl font-bold my-10">
+                  Explore More Projects...
+                </h1>
+              </div>
+              <div>{renderRecommendations(featuredRcmd.slice(1, 4))}</div>
+            </div>
+          </>
+        ) : (
+          <div className="noProjects">No projects found</div>
+        )}
+        <ScrollShowbarComponent
+          recentUploads={recentUploads}
+          heading={"RECENT UPLOADS"}
+          emptyMessage={"No recent uploads"}
+        />
+      </div>
     </>
   );
 }

@@ -14,6 +14,7 @@ body,
   height: 100%;
   margin: 0px;
   padding: 0px;
+  font-family: "Montserrat", sans-serif;
 }
 
 a {
@@ -142,9 +143,9 @@ a {
 }
 
 .siteStats {
-  background: url(./assets/bg1.png) left no-repeat,
-    url(./assets/bg2.png) right no-repeat;
-  height: 353px;
+  /* background: url(./assets/bg1.png) left no-repeat,
+    url(./assets/bg2.png) right no-repeat; */
+  /* height: 353px; */
 }
 
 .tagLine {
@@ -155,6 +156,9 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: #c3edc0;
+  margin: 20px;
+  font-weight: bold;
 }
 
 .smallHeading {
@@ -314,10 +318,13 @@ a {
 
 .recommendationCard {
   height: 25%;
-  margin: 0px 0px 0px 7%;
+  /* margin: 0px 0px 0px 7%; */
   display: flex;
-  border-bottom: 0.1rem solid #dcdedd;
+  /* border-bottom: 0.1rem solid #dcdedd; */
   padding: 10px 0px;
+  border-radius: 10px;
+  margin-block: 20px;
+  padding-inline: 10px;
 }
 
 .rcmdCardImg {
@@ -329,6 +336,7 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 10px;
 }
 
 .rcmdCardDetails {
@@ -356,7 +364,7 @@ a {
 }
 
 .rcmdCardFundedPercentage {
-  color: #037362;
+  color: #ff5403;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   letter-spacing: 0.1px;
@@ -369,7 +377,7 @@ a {
 }
 
 .rcmdCardAuthor {
-  color: #656969;
+  color: black;
   font-family: "Montserrat", sans-serif;
   font-size: 13px;
   letter-spacing: 0.1px;
@@ -629,7 +637,7 @@ textarea {
   padding: 20px;
 }
 
-h1 {
+/* h1 {
   border-bottom: 1px solid white;
   color: #3d3d3d;
   font-family: "Montserrat", sans-serif;
@@ -638,7 +646,7 @@ h1 {
   line-height: 24px;
   padding: 10px;
   text-align: center;
-}
+} */
 
 form {
   background: white;
