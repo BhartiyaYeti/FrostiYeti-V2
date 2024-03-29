@@ -392,7 +392,7 @@ a {
 .recentUploads {
   height: 563px;
   border-bottom: 0.1rem solid #dcdedd;
-  width: 80%;
+  /* width: 80%; */
   padding: 0px 10%;
 }
 
@@ -422,9 +422,8 @@ a {
 }
 
 .recentUploadsHeading {
-  color: #656969;
+  color: #f3f3f3;
   font-family: "Montserrat", sans-serif;
-  font-size: 13px;
   font-weight: 900;
   margin: 20px 0px;
 }
@@ -457,6 +456,7 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 15px;
 }
 
 .cardDetail {
@@ -468,21 +468,17 @@ a {
   font-family: "Montserrat", sans-serif;
   padding: 12px 0px;
   font-size: 19px;
-  font-weight: 500;
-  color: #282828;
+  font-weight: bold;
+  color: #f5f7f8;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-
-.cardTitle:hover {
-  color: #037362;
-  text-decoration: underline;
+  text-transform: uppercase;
 }
 
 .cardDesc {
   font-size: 18px;
-  color: #282828;
+  color: #f5f7f8;
   letter-spacing: 0.5px;
   max-height: 42px;
   position: relative;
@@ -490,16 +486,9 @@ a {
   overflow-y: hidden;
 }
 
-.cardDesc::after {
-  content: "...";
-  position: absolute;
-  right: 0px;
-  bottom: -1px;
-}
-
 .cardAuthor {
-  margin: 25px 0px;
-  color: #656969;
+  margin: 10px 0px;
+  color: #f5f7f8;
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
   width: 100%;

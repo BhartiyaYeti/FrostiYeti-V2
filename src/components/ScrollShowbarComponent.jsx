@@ -12,14 +12,16 @@ export default function ScrollShowbarComponent(props) {
       return (
         <div className="projectCard" key={index}>
           <Link to="/project" state={{ index: project.index }}>
-            <div
-              className="cardImg"
-              style={{
-                backgroundImage: project.cid
-                  ? `url(${"https://" + project.cid})`
-                  : dummyPic,
-              }}
-            ></div>
+            <div className="cardImg">
+              {" "}
+              <img
+                className="cardImg"
+                src={
+                  project.cid ? `url(${"https://" + project.cid})` : dummyPic
+                }
+                alt="Project_Image"
+              />
+            </div>
           </Link>
           <div className="cardDetail">
             <div className="cardTitle">
@@ -27,7 +29,9 @@ export default function ScrollShowbarComponent(props) {
                 {project.projectName}
               </Link>
             </div>
-            <div className="cardDesc">{project.projectDescription}</div>
+            <div className="cardDesc">
+              {project.projectDescription.slice(0, 5) + "..."}
+            </div>
             <div className="cardAuthor">{"By " + project.creatorName}</div>
           </div>
         </div>
@@ -35,7 +39,7 @@ export default function ScrollShowbarComponent(props) {
     });
   };
   return (
-    <div className="recentUploads">
+    <div className="recentUploads  bg-[#040d12]">
       <div className="recentUploadsHeader">
         <div className="recentUploadsHeading">{props.heading}</div>
         {props.recentUploads.length ? (

@@ -181,7 +181,7 @@ export default function HomeComponent(props) {
         )}
         <ScrollShowbarComponent
           recentUploads={recentUploads}
-          heading={"RECENT UPLOADS"}
+          heading={"Recent Uploads🔥"}
           emptyMessage={"No recent uploads"}
         />
       </div>
