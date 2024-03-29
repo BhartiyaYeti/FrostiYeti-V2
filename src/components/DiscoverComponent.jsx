@@ -76,7 +76,9 @@ export default function DiscoverComponent(props) {
               </div>
               <div className="cardDetail">
                 <div className="cardTitle">{project.projectName}</div>
-                <div className="cardDesc">{project.projectDescription}</div>
+                <div className="cardDesc">
+                  {project.projectDescription.slice(0, 20) + "..."}
+                </div>
                 <div className="cardAuthor">{project.creatorName}</div>
               </div>
             </div>
