@@ -64,14 +64,16 @@ export default function DiscoverComponent(props) {
         <Link to="/project" state={{ index: project.index }} key={index}>
           <div className="projectCardWrapper">
             <div className="projectCard">
-              <div
-                className="cardImg"
-                style={{
-                  backgroundImage: project.cid
-                    ? `url(${"https://" + project.cid})`
-                    : dummyPic,
-                }}
-              ></div>
+              <div className="cardImg">
+                <img
+                  src={{
+                    backgroundImage: project.cid
+                      ? `url(${"https://" + project.cid})`
+                      : dummyPic,
+                  }}
+                  alt=""
+                />
+              </div>
               <div className="cardDetail">
                 <div className="cardTitle">{project.projectName}</div>
                 <div className="cardDesc">{project.projectDescription}</div>
@@ -94,13 +96,19 @@ export default function DiscoverComponent(props) {
         filter={filter}
         changeCategory={(val) => changeFilter(val)}
       />
-      <div className="discoverHeading">Discover</div>
-      <div className="discoverContainer">
-        {projects.length !== 0 ? (
-          renderCards()
-        ) : (
-          <div className="noProjects">No projects found</div>
-        )}
+      <div className="">
+        <center>
+          <div className="text-4xl font-bold text-[#fdf497] px-10 mt-10">
+            Explorer
+          </div>
+        </center>
+        <div className="discoverContainer px-10">
+          {projects.length !== 0 ? (
+            renderCards()
+          ) : (
+            <div className="noProjects">No projects found</div>
+          )}
+        </div>
       </div>
     </>
   );
