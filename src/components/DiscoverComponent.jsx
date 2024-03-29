@@ -1,6 +1,6 @@
 import CategoryComponent from "./CategoryComponent";
 import { useEffect, useState } from "react";
-import dummyPic from "../assets/pg1.jpg";
+import dummyPic from "../assets/placeholderImage.jpg";
 import { Link, useLocation } from "react-router-dom";
 
 export default function DiscoverComponent(props) {

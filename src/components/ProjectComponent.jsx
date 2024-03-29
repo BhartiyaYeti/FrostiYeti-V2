@@ -2,7 +2,7 @@ import PaymentModal from "./PaymentModal";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import dummyPic from "../assets/pg1.jpg";
+import dummyPic from "../assets/placeholderImage.jpg";
 
 function ProjectComponent(props) {
   const [modalShow, setModalShow] = useState(false);

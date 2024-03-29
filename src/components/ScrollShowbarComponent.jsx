@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
-import dummyPic from "../assets/pg1.jpg";
+import dummyPic from "../assets/placeholderImage.jpg";
 
 export default function ScrollShowbarComponent(props) {
   const scroll = (val) => {

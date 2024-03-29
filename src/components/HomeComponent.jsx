@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CategoryComponent from "./CategoryComponent";
 import ScrollShowbarComponent from "./ScrollShowbarComponent";
 import { Link } from "react-router-dom";
-import dummyPic from "../assets/pg1.jpg";
+import dummyPic from "../assets/placeholderImage.jpg";
 export default function HomeComponent(props) {
   const PRECISION = 10 ** 18;
   const [stats, setStats] = useState({
