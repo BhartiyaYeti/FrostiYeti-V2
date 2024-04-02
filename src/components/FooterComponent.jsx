@@ -1,11 +1,9 @@
-import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-
 export default function FooterComponent(props) {
   return (
-    <footer class="bg-black">
+    <footer class="bg-[#111]">
       <div class="max-w-screen-xl px-4 py-3 mx-auto sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center sm:justify-between">
-          <div class="flex justify-center text-[#55C8ED] sm:justify-start">
+          <div class="flex justify-center text-gray-400 sm:justify-start">
             <h1>&copy; {new Date().getFullYear()} Chain4Scholrs </h1>
           </div>
 

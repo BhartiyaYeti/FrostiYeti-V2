@@ -153,7 +153,7 @@ export default function HomeComponent(props) {
                     {featuredRcmd[0].projectName}🔥
                   </div>
                   <div className="text-[#111] first-letter:uppercase text-xl mt-3 w-[80%]">
-                    {featuredRcmd[0].projectDescription}
+                    {featuredRcmd[0].projectDescription.slice(0, 150) + "..."}
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Officiis veritatis labore totam saepe quasi natus repellat
                     deleniti? Laboriosam magni cum mollitia dignissimos

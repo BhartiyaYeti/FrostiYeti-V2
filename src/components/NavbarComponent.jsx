@@ -9,14 +9,14 @@ export default function NavbarComponent(props) {
           className="text-white text-4xl font-bold hover:cursor-pointer"
           onClick={() => navigate("/")}
         >
-          EduLink
+          EduLink<span className="text-[#55C8ED]">!</span>
         </div>
         <div className="text-white flex gap-10 px-16">
           <h4
             onClick={() => navigate("discover")}
             className="text-lg hover:underline-offset-8 hover:underline hover:cursor-pointer decoration-sky-500"
           >
-            Discover
+            Explore
           </h4>
           <h4
             onClick={() => navigate("create_project")}

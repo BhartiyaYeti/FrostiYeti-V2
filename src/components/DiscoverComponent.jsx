@@ -62,24 +62,29 @@ export default function DiscoverComponent(props) {
     return projects.map((project, index) => {
       return (
         <Link to="/project" state={{ index: project.index }} key={index}>
-          <div className="projectCardWrapper">
-            <div className="projectCard">
-              <div className="cardImg">
-                <img
-                  src={{
-                    backgroundImage: project.cid
-                      ? `url(${"https://" + project.cid})`
-                      : dummyPic,
-                  }}
-                  alt=""
-                />
-              </div>
-              <div className="cardDetail">
-                <div className="cardTitle">{project.projectName}</div>
-                <div className="cardDesc">
-                  {project.projectDescription.slice(0, 20) + "..."}
+          <div className="">
+            <div className="mb-10 bg-[#31363F] w-max p-3 rounded-xl h-[350px]">
+              <img
+                className="w-[300px] rounded-xl"
+                src={
+                  project.cid ? `url(${"https://" + project.cid})` : dummyPic
+                }
+                alt=""
+              />
+              <div className="">
+                <div className="text-[#EEE] text-md mt-5">
+                  Campaign: {project.projectName}
                 </div>
-                <div className="cardAuthor">{project.creatorName}</div>
+                <div className="text-[#EEE] text-md w-[300px]">
+                  About Campaign:{" "}
+                  {project.projectDescription.slice(0, 100) + "..."}
+                </div>
+                <div className="text-[#EEE] first-letter:uppercase text-md mt-3">
+                  Campaign By{"  "}
+                  <span className="text-[#55C8ED] first-letter:uppercase">
+                    {project.creatorName}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -100,11 +105,11 @@ export default function DiscoverComponent(props) {
       />
       <div className="">
         <center>
-          <div className="text-4xl font-bold text-[#fdf497] px-10 mt-10">
-            Explorer
+          <div className="text-4xl font-bold text-[#55C8ED] px-10 mt-10">
+            Explore<span className="text-white">!</span>
           </div>
         </center>
-        <div className="discoverContainer px-10">
+        <div className="flex flex-wrap gap-10 mt-10 px-10 ">
           {projects.length !== 0 ? (
             renderCards()
           ) : (
