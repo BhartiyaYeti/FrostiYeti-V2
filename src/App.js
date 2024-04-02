@@ -11,6 +11,7 @@ import ProfileComponent from "./components/ProfileComponent";
 import { useState } from "react";
 import { ethers } from "ethers";
 import { abi } from "./abi";
+import SubNav from "./components/SubNav";
 const CONTRACT_ADDRESS = "0x1609bDd9c4e1e6cD3cAd9D1859bb86809ffF99F7";
 
 function App() {
@@ -84,7 +85,9 @@ function App() {
   }
   const checkConnected = (component) => {
     return !myContract ? (
-      <ConnectWallet connectMetamask={connect} />
+      <>
+        <ConnectWallet connectMetamask={connect} />
+      </>
     ) : (
       component
     );
