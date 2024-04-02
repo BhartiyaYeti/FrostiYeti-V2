@@ -8,7 +8,7 @@ export default function CategoryComponent(props) {
         props.changeCategory(val);
       } else {
         props.changeCategory(-1);
-        document.getElementsByClassName("categoryItem")[val].blur();
+        document.getElementsByClassName(" ")[val].blur();
       }
     } else {
       navigate("discover", {
@@ -20,41 +20,41 @@ export default function CategoryComponent(props) {
   };
   const setSelectedFocus = () => {
     props.filter !== -1 &&
-      document.getElementsByClassName("categoryItem")[props.filter]?.focus();
+      document.getElementsByClassName(" ")[props.filter]?.focus();
   };
   useEffect(() => {
     setSelectedFocus();
   }, []);
   return (
-    <div className="category">
-      <div
-        className="categoryItem"
+    <div className="flex text-white gap-10 justify-center">
+      <h1
+        className=" text-base hover:underline-offset-8 hover:underline hover:cursor-pointer decoration-sky-500"
         tabIndex="1"
         onClick={() => onClickFilter(0)}
       >
-        {"Design & tech"}
-      </div>
-      <div
-        className="categoryItem"
+        Design & tech
+      </h1>
+      <h1
+        className=" text-base hover:underline-offset-8 hover:underline hover:cursor-pointer decoration-sky-500"
         tabIndex="1"
         onClick={() => onClickFilter(1)}
       >
         Film
-      </div>
-      <div
-        className="categoryItem"
+      </h1>
+      <h1
+        className=" text-base hover:underline-offset-8 hover:underline hover:cursor-pointer decoration-sky-500"
         tabIndex="1"
         onClick={() => onClickFilter(2)}
       >
         Arts
-      </div>
-      <div
-        className="categoryItem"
+      </h1>
+      <h1
+        className=" text-base hover:underline-offset-8 hover:underline hover:cursor-pointer decoration-sky-500"
         tabIndex="1"
         onClick={() => onClickFilter(3)}
       >
         Games
-      </div>
+      </h1>
     </div>
   );
 }

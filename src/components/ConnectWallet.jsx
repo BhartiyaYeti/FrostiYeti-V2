@@ -15,7 +15,7 @@ export default function ConnectWallet(props) {
           </div>
           <div className="my-auto w-[600px]">
             <h1 className="text-5xl font-bold mb-3 typing">
-              Chain4Scholars
+              EduLink
             </h1>
             <span className="text-white">
               Experience the power of blockchain in student financing:

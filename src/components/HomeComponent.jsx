@@ -110,12 +110,15 @@ export default function HomeComponent(props) {
     <>
       <CategoryComponent isHome={true} />
       {/* siteStats */}
-      <div className="siteStats">
-        <div className="tagLine">
-          Empowering every student's dream, one fundraiser at a time.
+      <div className="">
+        <div className="text-white text-center my-10 text-3xl">
+          Empowering Every <span className="text-[#55C8ED] ">Student's </span>
+          Dream, One{" "}
+          <span className="decoration-sky-500 underline">Fundraiser</span> At a
+          Time.
         </div>
 
-        <div className="flex gap-20 justify-center">
+        <div className="flex gap-20 justify-center ">
           <div className="bg-[#76ABAE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-lg hover:scale-105 hover:cursor-pointer">
             <h1 className="text-3xl font-bold">{stats.projects}</h1>
             <h3 className="text-xl">Projects🔯</h3>
@@ -132,7 +135,7 @@ export default function HomeComponent(props) {
 
         {featuredRcmd.length !== 0 ? (
           <>
-            <div className="mt-10 p-10 bg-[#18191A]">
+            <div className="mt-10 p-10 px-16 ">
               <h1 className="text-[#f5f7f8] text-2xl font-bold mb-10">
                 Project Of the Day!🌟
               </h1>
