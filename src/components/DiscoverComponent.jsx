@@ -109,7 +109,7 @@ export default function DiscoverComponent(props) {
             Explore<span className="text-white">!</span>
           </div>
         </center>
-        <div className="flex flex-wrap gap-10 mt-10 px-10 ">
+        <div className="flex flex-wrap gap-10 mt-10 px-10 min-h-min">
           {projects.length !== 0 ? (
             renderCards()
           ) : (
