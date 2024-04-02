@@ -62,9 +62,9 @@ export default function HomeComponent(props) {
   const renderRecommendations = (val) => {
     return val.map((project, index) => {
       return (
-        <div className="">
+        <div className="flex justify-center">
           <div
-            className="recommendationCard"
+            className=" rounded-xl"
             key={index}
             style={
               index % 2 === 0
@@ -74,27 +74,25 @@ export default function HomeComponent(props) {
           >
             <Link to="/project" state={{ index: project.index }}>
               <img
-                className="rcmdCardImg"
+                className="w-[300px] rounded-t-xl"
                 src={
                   project.cid ? `url(${"https://" + project.cid})` : dummyPic
                 }
                 alt="Project_Image"
               />
             </Link>
-            <div className="rcmdCardDetails mt-3">
+            <div className="px-5 py-2">
               <div className="font-bold text-xl">
                 <Link to="/project" state={{ index: project.index }}>
                   {project.projectName}
                 </Link>
               </div>
-              <div className="rcmdCardFundedPercentage">
+              <div className="">
                 {((project.amountRaised / project.fundingGoal) * 100).toFixed(
                   2
                 ) + "% Funded"}
               </div>
-              <div className="rcmdCardAuthor">
-                {"By " + project.creatorName}
-              </div>
+              <div className="">{"By " + project.creatorName}</div>
             </div>
           </div>
         </div>
@@ -135,58 +133,59 @@ export default function HomeComponent(props) {
 
         {featuredRcmd.length !== 0 ? (
           <>
-            <div className="mt-10 p-10 px-16 ">
+            <div className="mt-10 p-10 px-16">
               <h1 className="text-[#f5f7f8] text-2xl font-bold mb-10">
                 Project Of the Day!🌟
               </h1>
               <div className="flex gap-10">
-                <Link to="/project" state={{ index: featuredRcmd[0].index }}>
-                  <div>
-                    <img
-                      className="bg-white bg-no-repeat bg-contain bg-center h-[350px] rounded-xl"
-                      src={
-                        featuredRcmd[0].cid
-                          ? `url(${"https://" + featuredRcmd[0].cid})`
-                          : dummyPic
-                      }
-                      alt="Project_Photo"
-                    />
-                  </div>
-                </Link>
+                <img
+                  className="bg-white bg-no-repeat bg-contain bg-center h-[350px] rounded-xl"
+                  src={
+                    featuredRcmd[0].cid
+                      ? `url(${"https://" + featuredRcmd[0].cid})`
+                      : dummyPic
+                  }
+                  alt="Project_Photo"
+                />
                 <div>
-                  <div className="text-[#f5f7f8] uppercase text-3xl pt-10">
-                    <Link
-                      to="/project"
-                      state={{ index: featuredRcmd[0].index }}
-                    >
-                      {featuredRcmd[0].projectName}
-                    </Link>
+                  <div className="text-[#f5f7f8] first-letter:uppercase text-3xl pt-10">
+                    {featuredRcmd[0].projectName}
                   </div>
-                  <div className="text-[#f5f7f8] uppercase text-xl ">
+                  <div className="text-[#f5f7f8] first-letter:uppercase text-xl mt-3">
                     {featuredRcmd[0].projectDescription}
                   </div>
-                  <div className="text-[#f5f7f8] uppercase text-md ">
-                    {"By " + featuredRcmd[0].creatorName}
+                  <div className="text-[#f5f7f8] first-letter:uppercase text-md mt-3">
+                    Campaign By{" "}
+                    <span className="text-[#55C8ED] first-letter:uppercase">
+                      {featuredRcmd[0].creatorName}
+                    </span>
                   </div>
+                  <Link to="/project" state={{ index: featuredRcmd[0].index }}>
+                    <button className="bg-[#55C8ED] px-6 py-2 mt-5 hover:bg-white">
+                      View Campaign
+                    </button>
+                  </Link>
                 </div>
               </div>
               <div>
-                <h1 className="text-[#f5f7f8] text-2xl font-bold my-10">
+                <h1 className="text-[#f5f7f8] text-2xl font-bold my-10 ">
                   Explore More Projects...
                 </h1>
               </div>
-              <div>{renderRecommendations(featuredRcmd.slice(1, 4))}</div>
+              <div className="flex gap-10">
+                {renderRecommendations(featuredRcmd.slice(1, 4))}
+              </div>
             </div>
           </>
         ) : (
           <div className="noProjects">No projects found</div>
         )}
-        <ScrollShowbarComponent
-          recentUploads={recentUploads}
-          heading={"Recent Uploads🔥"}
-          emptyMessage={"No recent uploads"}
-        />
       </div>
+      <ScrollShowbarComponent
+        recentUploads={recentUploads}
+        heading={"Recent Uploads🔥"}
+        emptyMessage={"No recent uploads"}
+      />
     </>
   );
 }
