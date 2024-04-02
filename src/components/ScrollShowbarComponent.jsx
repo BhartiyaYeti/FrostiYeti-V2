@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import dummyPic from "../assets/placeholderImage.jpg";
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 export default function ScrollShowbarComponent(props) {
   const scroll = (val) => {
     document.getElementsByClassName("recentUploadsContainer")[0].scrollLeft +=
@@ -10,57 +11,40 @@ export default function ScrollShowbarComponent(props) {
   const renderCards = () => {
     return props.recentUploads.map((project, index) => {
       return (
-        <div className="projectCard" key={index}>
+        <div className="w-[300px]" key={index}>
           <Link to="/project" state={{ index: project.index }}>
-            <div className="cardImg">
-              {" "}
-              <img
-                className="cardImg"
-                src={
-                  project.cid ? `url(${"https://" + project.cid})` : dummyPic
-                }
-                alt="Project_Image"
-              />
-            </div>
+            <img
+              className=""
+              src={project.cid ? `url(${"https://" + project.cid})` : dummyPic}
+              alt="Project_Image"
+            />
           </Link>
-          <div className="cardDetail">
-            <div className="cardTitle">
-              <Link to="/project" state={{ index: project.index }}>
-                {project.projectName}
-              </Link>
-            </div>
-            <div className="cardDesc">
+          <div className="">
+            <Link
+              to="/project"
+              state={{ index: project.index }}
+              className="text-white"
+            >
+              {project.projectName}
+            </Link>
+            <div className="">
               {project.projectDescription.slice(0, 5) + "..."}
             </div>
-            <div className="cardAuthor">{"By " + project.creatorName}</div>
+            <div className="">{"By " + project.creatorName}</div>
           </div>
         </div>
       );
     });
   };
   return (
-    <div className="recentUploads  bg-[#18191A]">
-      <div className="recentUploadsHeader">
-        <div className="recentUploadsHeading">{props.heading}</div>
-        {props.recentUploads.length ? (
-          <div className="scrollButtons">
-            <BsArrowLeftCircle
-              className="scrollNavBtn"
-              onClick={() => scroll(-300)}
-            />
-            <BsArrowRightCircle
-              className="scrollNavBtn"
-              onClick={() => scroll(300)}
-            />
-          </div>
-        ) : (
-          ""
-        )}
+    <div className="px-16">
+      <div className=" text-[#f5f7f8] text-2xl font-bold mb-10">
+        {props.heading}
       </div>
 
-      <div className="recentUploadsContainer">
+      <div className="flex flex-wrap gap-10">
         {props.recentUploads.length ? (
-          renderCards()
+          <>{renderCards()}</>
         ) : (
           <div className="noProjects">{props.emptyMessage}</div>
         )}

@@ -5,7 +5,7 @@ export default function FooterComponent(props) {
     <footer class="bg-black">
       <div class="max-w-screen-xl px-4 py-3 mx-auto sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center sm:justify-between">
-          <div class="flex justify-center text-[#c3edc0] sm:justify-start">
+          <div class="flex justify-center text-[#55C8ED] sm:justify-start">
             <h1>&copy; {new Date().getFullYear()} Chain4Scholrs </h1>
           </div>
 
