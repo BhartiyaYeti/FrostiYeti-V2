@@ -161,11 +161,6 @@ export default function HomeComponent(props) {
                     quas.
                   </div>
                   <div className="text-[#111] first-letter:uppercase text-xl mt-8 w-[60%]">
-                    {/* {(
-                      (featuredRcmd[0].amountRaised /
-                        featuredRcmd[0].fundingGoal) *
-                      100
-                    ).toFixed(2) + "% Funded"} */}
                     <div>
                       <div class="mb-2 w-[80%] flex justify-between items-center">
                         <h3 class="text-base font-semibold text-gray-800 dark:text-[#111]">
