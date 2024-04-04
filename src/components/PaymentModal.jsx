@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { ethers } from "ethers";
+import { AiOutlineClose } from "react-icons/ai";
 
 function PaymentModal(props) {
-  let [amount, setAmount] = useState(1);
+  let [amount, setAmount] = useState();
   const PRECISION = 10 ** 18;
 
   // sets the modalShow state to false to disable rendering of modal
@@ -20,7 +21,7 @@ function PaymentModal(props) {
   async function sendFund() {
     console.log("Sending fund...");
     if (amount <= 0) {
-      alert('Amount is less than or equal to 0');
+      alert("Amount is less than or equal to 0");
       return;
     }
     try {
@@ -40,31 +41,36 @@ function PaymentModal(props) {
   }
 
   return (
-    <div className="modal">
-      <div className="modalHeader">
-        <h1>
-          Payment{" "}
-          <span className="closeBtn" onClick={() => closeModal()}>
-            &times;
-          </span>
-        </h1>
-      </div>
-      <div className="modalContent">
-        <div className="paymentForm">
-          <label className="paymentLabel">Amount (AVAX)</label>
+    <div className="flex items-center justify-center  ">
+      <div className="bg-[#55C8ED] w-[400px] p-5 ">
+        <div className="flex justify-between">
+          <div></div>
+          <AiOutlineClose
+            onClick={props.close}
+            className="hover:cursor-pointer"
+          />
+        </div>
+        <h1 className="text-center font-bold text-3xl">Payment</h1>
+        <hr className="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700" />
+        <div className="text-center">
+          <h1 className="my-3 text-lg">Enter Amount in AVAX</h1>
           <input
             type="number"
             name="payment"
             id="payment"
-            className="payment"
-            placeholder="Enter AVAX amount"
+            className="w-[150px]"
+            placeholder="  Enter AVAX"
             min="1"
             step="1"
             value={amount}
             onChange={handleChange}
             required
           />
-          <button className="submit" onClick={() => sendFund()}>
+          <br />
+          <button
+            className="bg-[#111] text-white px-6 py-2 mt-5 hover:bg-white hover:text-black"
+            onClick={() => sendFund()}
+          >
             Fund
           </button>
         </div>

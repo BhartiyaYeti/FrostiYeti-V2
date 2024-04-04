@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import dummyPic from "../assets/placeholderImage.jpg";
-
+import { MdOutlineCategory } from "react-icons/md";
+import Popup from "reactjs-popup";
+import { GiPayMoney } from "react-icons/gi";
+// import "reactjs-popup/dist/index.css";
 function ProjectComponent(props) {
   const [modalShow, setModalShow] = useState(false);
   const [projectDetails, setProjectDetails] = useState({
@@ -276,10 +279,21 @@ function ProjectComponent(props) {
             alt="Project_Picture"
           />
           <div className="w-full">
-            <h1 className="text-[#111] text-4xl uppercase">
+            <h1 className="text-[#111] text-3xl font-bold first-letter:uppercase">
               {projectDetails?.projectName}
             </h1>
-            <div className="text-[#111] first-letter:uppercase text-xl mt-8 w-[100%]">
+            <h3 className="mt-1 text-sm">
+              Checkout Campaign:{" "}
+              <a
+                className="projectLink"
+                target="_blank"
+                href={projectDetails.projectLink}
+                rel="noreferrer"
+              >
+                {projectDetails.projectLink.slice(0, 40) + "..."}
+              </a>{" "}
+            </h3>
+            <div className="text-[#111] first-letter:uppercase text-xl mt-4 w-[100%]">
               <div>
                 <div class="mb-2 w-[80%] flex justify-between items-center">
                   <h3 class="text-base font-semibold text-gray-800 dark:text-[#111]">
@@ -291,14 +305,16 @@ function ProjectComponent(props) {
                     ).toFixed(2) + "%"}
                     )
                   </h3>
-                  <span class="text-base text-gray-800 dark:text-[#111]">
-                    {Number(projectDetails?.amountRaised / PRECISION)} raised
-                    out of {Number(projectDetails?.fundingGoal / PRECISION)}{" "}
-                    AVAX
-                  </span>
+                  <div>
+                    <span class="text-base text-gray-800 dark:text-[#111]">
+                      {Number(projectDetails?.amountRaised / PRECISION)} raised
+                      out of {Number(projectDetails?.fundingGoal / PRECISION)}{" "}
+                      AVAX
+                    </span>
+                  </div>
                 </div>
                 <div
-                  className="flex w-[80%] h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                  className="flex w-[80%] h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
                   role="progressbar"
                   aria-valuenow="25"
                   aria-valuemin="0"
@@ -317,29 +333,41 @@ function ProjectComponent(props) {
                 </div>
               </div>
             </div>
-            <h4 className="mt-5">
-              Backed by : {projectDetails?.contributors?.length}
-            </h4>
-            <p className="projectLinkLabel">
-              Category: {getCategoryFromCode(projectDetails.category)}
-            </p>
-            <p className="projectLinkLabel">
-              Creation date: {displayDate(projectDetails.creationTime)}
-            </p>
+            <div className="mt-2 flex justify-between w-[80%] items-center">
+              <p className=" flex items-center gap-1 text-lg">
+                <MdOutlineCategory /> Category:{" "}
+                {getCategoryFromCode(projectDetails.category)}
+              </p>
+              <p className="projectLinkLabel">
+                Created On:{" "}
+                <span className="font-bold">
+                  {displayDate(projectDetails.creationTime)}
+                </span>
+              </p>
+            </div>
+            <div className="mt-5 flex justify-between w-[80%]">
+              <h4>
+                Backed by :{" "}
+                <span className="font-bold">
+                  {projectDetails?.contributors?.length}
+                </span>
+              </h4>
+              <h2>
+                {!isOver ? (
+                  <>
+                    <span className="font-bold">{timerString}</span> Time Left
+                  </>
+                ) : (
+                  "Funding duration over!!"
+                )}
+              </h2>
+            </div>
+
             <p className="projectLinkLabel">
               Refund Policy:{" "}
               {projectDetails.refundPolicy ? "Non-Refundable " : "Refundable"}
             </p>
-            <p className="projectLinkLabel">
-              Project link:
-              <a
-                className="projectLink"
-                target="_blank"
-                href={projectDetails.projectLink}
-              >
-                {projectDetails.projectLink}
-              </a>
-            </p>
+
             <p className="projectLinkLabel">
               Owner:
               <Link
@@ -353,100 +381,107 @@ function ProjectComponent(props) {
                 {" " + projectDetails.creatorName}
               </Link>
             </p>
-            <div className="remainingDaysContainer">
-              <h2>{!isOver ? timerString : "Funding duration over!!"}</h2>
-            </div>
-            {!isOver && (
-              <p className="afterRemainingDaysContainer">
-                time left for funding
-              </p>
-            )}
             {!isOver ? (
               !isOwner() && (
-                <div className="supportButtonContainer">
-                  <button
-                    className="supportButton"
-                    onClick={() => onClickPayment()}
-                  >
-                    Back this project
-                  </button>
-                </div>
+                <Popup
+                  trigger={
+                    <button className="bg-[#55C8ED] px-6 py-2 mt-5 hover:bg-[#111] hover:text-white flex items-center">
+                      Fund this Campaign <GiPayMoney />
+                    </button>
+                  }
+                  modal
+                >
+                  {(close) => (
+                    <PaymentModal
+                      setModalShow={setModalShow}
+                      contract={props.contract}
+                      index={index}
+                      projectDetails={projectDetails}
+                      setProjectDetails={setProjectDetails}
+                      userAddress={props.userAddress}
+                      close={close}
+                    />
+                  )}
+                </Popup>
               )
             ) : isOwner() ? (
               claimFundCheck() && !projectDetails.claimedAmount ? (
-                <div className="supportButtonContainer">
-                  <button className="supportButton" onClick={() => claimFund()}>
-                    Claim Fund
-                  </button>
-                </div>
+                <button
+                  className="bg-[#55C8ED] px-6 py-2 mt-5 hover:bg-[#111] hover:text-white"
+                  onClick={() => claimFund()}
+                >
+                  Claim Fund
+                </button>
               ) : projectDetails.claimedAmount ? (
-                <h2 style={{ color: "red" }}>Fund claimed!</h2>
+                <h2 className="text-red-600 text-2xl my-2 font-bold">
+                  Fund claimed!
+                </h2>
               ) : (
                 ""
               )
             ) : checkIfContributor() &&
               claimRefundCheck() &&
               !projectDetails.refundClaimed[getContributorIndex()] ? (
-              <div className="supportButtonContainer">
-                <button className="supportButton" onClick={() => claimRefund()}>
-                  Claim Refund
-                </button>
-              </div>
+              <button
+                className="bg-[#55C8ED] px-6 py-2 mt-5 hover:bg-[#111] hover:text-white"
+                onClick={() => claimRefund()}
+              >
+                Claim Refund
+              </button>
             ) : projectDetails.refundClaimed[getContributorIndex()] ? (
-              <h2 style={{ color: "red" }}>Refund Claimed!</h2>
+              <h2 className="text-red-600 text-2xl my-2 font-bold">
+                Refund Claimed!
+              </h2>
             ) : (
               ""
             )}
-            {modalShow && (
-              <PaymentModal
-                setModalShow={setModalShow}
-                contract={props.contract}
-                index={index}
-                projectDetails={projectDetails}
-                setProjectDetails={setProjectDetails}
-                userAddress={props.userAddress}
-              />
-            )}
           </div>
         </div>
+        {modalShow && (
+          <PaymentModal
+            setModalShow={setModalShow}
+            contract={props.contract}
+            index={index}
+            projectDetails={projectDetails}
+            setProjectDetails={setProjectDetails}
+            userAddress={props.userAddress}
+          />
+        )}
       </div>
 
       <div className="px-16 my-10 text-[#EEE]">
-        <div className="projectBottomContainer">
-          <div className="aboutContainer">
-            <h1 className="about">About</h1>
-            <p className="description">{projectDetails?.projectDescription}</p>
+        <div className="flex justify-center">
+          <div className="w-[50%]">
+            <h1 className="text-2xl font-bold mb-4">Story 📝</h1>
+            <p className="italic text-lg ms-5">
+              {projectDetails?.projectDescription}
+            </p>
           </div>
-        </div>
-        <div className="contributorHeader">Contributors</div>
-        <div className="contributors">
-          <div className="tableRow header">
-            <div className="item border" style={{ width: "80px" }}>
-              Sno.
-            </div>
-            <div className="item border">Address</div>
-            <div className="item border">Amount</div>
+          <div className="w-[50%]">
+            <div className="text-2xl font-bold mb-4">Contributors💲</div>
+            <table className="w-full text-center ">
+              <thead className="bg-white text-[#111]">
+                <th className="pb-2">Sr No.</th>
+                <th className="pb-2">Suppoters</th>
+                <th className="pb-2">Amount</th>
+              </thead>
+              <tbody>
+                {projectDetails.contributors.length > 0 ? (
+                  projectDetails.contributors.map((contributor, idx) => (
+                    <tr className="border-b border-blue-gray-200">
+                      <td className="p-1">{idx + 1}</td>
+                      <td className="p-1">{contributor}</td>
+                      <td className="p-1">
+                        {projectDetails.amount[idx] / PRECISION}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <div className="noProjects">No contributors yet</div>
+                )}
+              </tbody>
+            </table>
           </div>
-          {projectDetails.contributors.length > 0 ? (
-            projectDetails.contributors.map((contributor, idx) => (
-              <div
-                className={
-                  "tableRow " + (idx % 2 === 0 ? "darkRow" : "lightRow")
-                }
-                key={idx}
-              >
-                <div className="item border" style={{ width: "80px" }}>
-                  {idx + 1 + "."}
-                </div>
-                <div className="item border">{contributor}</div>
-                <div className="item border">
-                  {projectDetails.amount[idx] / PRECISION}
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="noProjects">No contributors yet</div>
-          )}
         </div>
       </div>
     </>

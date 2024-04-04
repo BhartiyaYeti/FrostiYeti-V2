@@ -123,7 +123,7 @@ export default function HomeComponent(props) {
             <h3 className="text-xl mt-3">Projects🔯</h3>
           </div>
           <div className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-red-400">
-            <h1 className="text-3xl font-bold">{stats.fundings + " AVAX"}</h1>
+            <h1 className="text-3xl font-bold">{(stats.fundings).toFixed(3) + " AVAX"}</h1>
             <h3 className="text-xl mt-3">Funds Raised💵</h3>
           </div>{" "}
           <div className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-[#55C8ED]">
