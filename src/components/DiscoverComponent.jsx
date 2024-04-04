@@ -59,7 +59,7 @@ export default function DiscoverComponent(props) {
     }
   };
   const renderCards = () => {
-    return projects.map((project, index) => {
+    return projects.reverse().map((project, index) => {
       return (
         <Link to="/project" state={{ index: project.index }} key={index}>
           <div className="">

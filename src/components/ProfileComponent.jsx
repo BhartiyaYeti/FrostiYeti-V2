@@ -10,6 +10,8 @@ function ProfileComponent(props) {
   const [completedProjects, setCompletedProjects] = useState([]);
   const [userFundedProjects, setUserFundedProjects] = useState([]);
 
+  console.log(completedProjects);
+
   // fetch the projects created by the address passed as parameter
   async function getProjectList() {
     let res;
@@ -114,49 +116,35 @@ function ProfileComponent(props) {
   }, []);
 
   return (
-    <div className="profileContainer">
-      <div className="profileHeadingContainer">
-        <h1>{name}</h1>
-      </div>
-      <div className="profileAddressContainer">
-        <h2>{address}</h2>
-      </div>
+    <div className="">
+      <h1 className="text-center text-white text-2xl font-bold">{name}</h1>
+      <h2 className="text-center text-white italic mb-10 text-lg font-semibold">
+        {address}
+      </h2>
       {ongoingProjects.length ? (
-        <div className="projectsContainer">
-          <div className="projectList">
-            <ScrollShowbarComponent
-              recentUploads={ongoingProjects}
-              heading={"ONGOING PROJECTS"}
-              emptyMessage={"No ongoing projects"}
-            />
-          </div>
-        </div>
+        <ScrollShowbarComponent
+          recentUploads={ongoingProjects}
+          heading={"ONGOING PROJECTS"}
+          emptyMessage={"No ongoing projects"}
+        />
       ) : (
         ""
       )}
       {completedProjects.length ? (
-        <div className="projectsContainer">
-          <div className="projectList">
-            <ScrollShowbarComponent
-              recentUploads={completedProjects}
-              heading={"COMPLETED PROJECTS"}
-              emptyMessage={"No completed projects"}
-            />
-          </div>
-        </div>
+        <ScrollShowbarComponent
+          recentUploads={completedProjects}
+          heading={"COMPLETED PROJECTS"}
+          emptyMessage={"No completed projects"}
+        />
       ) : (
         ""
       )}
       {address === props.userAddress && userFundedProjects.length ? (
-        <div className="projectsContainer">
-          <div className="projectList">
-            <ScrollShowbarComponent
-              recentUploads={userFundedProjects}
-              heading={"PROJECTS FUNDED"}
-              emptyMessage={"No projects funded yet"}
-            />
-          </div>
-        </div>
+        <ScrollShowbarComponent
+          recentUploads={userFundedProjects}
+          heading={"PROJECTS FUNDED"}
+          emptyMessage={"No projects funded yet"}
+        />
       ) : (
         ""
       )}

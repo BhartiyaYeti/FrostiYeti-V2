@@ -459,28 +459,32 @@ function ProjectComponent(props) {
           </div>
           <div className="w-[50%]">
             <div className="text-2xl font-bold mb-4">Contributors💲</div>
-            <table className="w-full text-center ">
-              <thead className="bg-white text-[#111]">
-                <th className="pb-2">Sr No.</th>
-                <th className="pb-2">Suppoters</th>
-                <th className="pb-2">Amount</th>
-              </thead>
-              <tbody>
-                {projectDetails.contributors.length > 0 ? (
-                  projectDetails.contributors.map((contributor, idx) => (
-                    <tr className="border-b border-blue-gray-200">
-                      <td className="p-1">{idx + 1}</td>
-                      <td className="p-1">{contributor}</td>
-                      <td className="p-1">
-                        {projectDetails.amount[idx] / PRECISION}
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <div className="noProjects">No contributors yet</div>
-                )}
-              </tbody>
-            </table>
+            {projectDetails.contributors.length > 0 ? (
+              <table className="w-full text-center ">
+                <thead className="bg-white text-[#111]">
+                  <th className="pb-2">Sr No.</th>
+                  <th className="pb-2">Suppoters</th>
+                  <th className="pb-2">Amount</th>
+                </thead>
+                <tbody>
+                  {projectDetails.contributors.length > 0 ? (
+                    projectDetails.contributors.map((contributor, idx) => (
+                      <tr className="border-b border-blue-gray-200">
+                        <td className="p-1">{idx + 1}</td>
+                        <td className="p-1">{contributor}</td>
+                        <td className="p-1">
+                          {projectDetails.amount[idx] / PRECISION}
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <div className="noProjects">No contributors yet</div>
+                  )}
+                </tbody>
+              </table>
+            ) : (
+              <div className="noProjects">No contributors yet</div>
+            )}
           </div>
         </div>
       </div>
