@@ -8,3 +8,17 @@ body {
   background-color: #111111;
   font-family: "Outfit", sans-serif;
 }
+
+input,
+textarea,
+select {
+  border-bottom: 2px solid #55c8ed;
+  border-radius: 0px 0px 5px 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}

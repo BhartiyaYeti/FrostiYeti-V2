@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { create } from "ipfs-http-client";
-import { Web3Storage } from 'web3.storage';
+import { Web3Storage } from "web3.storage";
 
 function CreateProjectComponent(props) {
   const [formInput, setFormInput] = useState({
@@ -118,88 +118,109 @@ function CreateProjectComponent(props) {
   }
 
   return (
-    // onSubmit function to do further operation with form data --> not defined yet
-    <div className="create-form">
-      <form method="post" onSubmit={submitProjectData} name="projectForm">
-        <h1>Create Project</h1>
-        <label>Category</label>
-        <select name="category" required onChange={handleChange}>
-          <option value="" selected disabled hidden>
-            Select category
-          </option>
-          <option value="design and tech">Design and Tech</option>
-          <option value="film">Film</option>
-          <option value="arts">Arts</option>
-          <option value="games">Games</option>
-        </select>
-        <label>Project Name</label>
-        <input
-          name="projectName"
-          placeholder="Enter the project name"
-          required
-          onChange={handleChange}
-        />
-        <label>Project Description</label>
-        <textarea
-          name="description"
-          placeholder="Enter project description"
-          cols="50"
-          rows="5"
-          required
-          onChange={handleChange}
-        />
-        <label>Creator Name</label>
-        <input
-          name="creatorName"
-          placeholder="Enter Creator Name"
-          required
-          onChange={handleChange}
-        />
-        {/* <label>Upload Project Image</label>
-        <input
-          type="file"
-          name="image"
-          accept="image/*"
-          onChange={handleImageChange}
-        />
-        <p className="caution">*Image of resolution 1920x1080 is preffered for better display</p> */}
-        <label>Project Link</label>
-        <input
-          type="url"
-          name="link"
-          placeholder="Enter link to the project"
-          onChange={handleChange}
-        />
-        <label>Funding Goal (AVAX)</label>
-        <input
-          type="number"
-          step="any"
-          name="goal"
-          placeholder="Enter the funding goal"
-          // min="0.001"
-          required
-          onChange={handleChange}
-        />
-        <label>Duration (Minutes)</label>
-        <input
-          type="number"
-          name="duration"
-          placeholder="Enter the duration for the funding"
-          min="1"
-          required
-          onChange={handleChange}
-        />
-        <label>Refund policy</label>
-        <select name="refundPolicy" required onChange={handleChange}>
-          <option value="" selected disabled hidden>
-            Select Refund type
-          </option>
-          <option value="refundable">Refundable</option>
-          <option value="non-refundable">Non-Refundable</option>
-        </select>
-        <input type="submit" className="submitButton" value="Submit" />
-      </form>
-    </div>
+    <>
+      <h1 className="text-3xl text-center font-bold text-white">
+        Create Campaign
+      </h1>
+      <center>
+        <div className="bg-[#f5f7f8] w-[50%] my-10 rounded-2xl">
+          <div className="flex gap-10  p-10 rounded-3xl text-start">
+            <div className="w-full ">
+              <div>
+                <h3>Campaign Name:</h3>
+                <input
+                  name="projectName"
+                  placeholder="  Enter The Campaign Name"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <h3>Campaign Story:</h3>
+                <textarea
+                  name="description"
+                  placeholder="  Write Back Story..."
+                  cols="50"
+                  rows="5"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <h3>Campaign Category:</h3>
+                <select name="category" required onChange={handleChange}>
+                  <option value="" selected disabled hidden>
+                    Select category
+                  </option>
+                  <option value="design and tech">Design and Tech</option>
+                  <option value="film">Film</option>
+                  <option value="arts">Arts</option>
+                  <option value="games">Games</option>
+                </select>
+              </div>
+              <div>
+                <h3>Campaign Link:</h3>
+                <input
+                  type="url"
+                  name="link"
+                  placeholder="  Enter link to the project"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="w-full">
+              <div>
+                <h3>Creator Name:</h3>
+                <input
+                  name="creatorName"
+                  placeholder="  Enter Creator Name"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <h3>Funding Goal(AVAX)</h3>
+                <input
+                  type="number"
+                  step="any"
+                  name="goal"
+                  placeholder=" Enter the funding goal"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <h3>Duration in Minitus</h3>
+                <input
+                  type="number"
+                  name="duration"
+                  placeholder="  Enter the duration"
+                  min="1"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <h3>Refund Policy</h3>
+                <select name="refundPolicy" required onChange={handleChange}>
+                  <option value="" selected disabled hidden>
+                    Select Refund type
+                  </option>
+                  <option value="refundable">Refundable</option>
+                  <option value="non-refundable">Non-Refundable</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={submitProjectData}
+            className="bg-[#55C8ED] px-6 py-2 my-5 hover:bg-[#111] hover:text-white"
+          >
+            Save
+          </button>
+        </div>
+      </center>
+    </>
   );
 }
 
