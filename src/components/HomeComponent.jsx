@@ -4,6 +4,8 @@ import ScrollShowbarComponent from "./ScrollShowbarComponent";
 import { Link } from "react-router-dom";
 import dummyPic from "../assets/placeholderImage.jpg";
 import $ from "jquery";
+import { motion } from "framer-motion";
+
 export default function HomeComponent(props) {
   const PRECISION = 10 ** 18;
   const [stats, setStats] = useState({
@@ -64,7 +66,7 @@ export default function HomeComponent(props) {
     return val.map((project, index) => {
       return (
         <div className="flex justify-center">
-          <div
+          <motion.div
             className=" rounded-xl hover:scale-105"
             key={index}
             style={
@@ -72,6 +74,13 @@ export default function HomeComponent(props) {
                 ? { background: "#55C8ED" }
                 : { background: "#EEEEEE" }
             }
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: `1.${index}`, ease: "linear" }}
+            variants={{
+              visible: { opacity: 1, x: 0 },
+              hidden: { opacity: 0, x: -100 },
+            }}
           >
             <Link to="/project" state={{ index: project.index }}>
               <img
@@ -94,7 +103,7 @@ export default function HomeComponent(props) {
                 <p className="underline">View More Details💸</p>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       );
     });
@@ -110,28 +119,64 @@ export default function HomeComponent(props) {
       <CategoryComponent isHome={true} />
       {/* siteStats */}
       <div className="">
-        <div className="text-white text-center my-10 text-3xl">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          transition={{ duration: 2 }}
+          variants={{
+            visible: { opacity: 1 },
+            hidden: { opacity: 0 },
+          }}
+          className="text-white text-center my-10 text-3xl"
+        >
           Empowering Every <span className="text-[#55C8ED] ">Student's </span>
           Dream, One{" "}
           <span className="decoration-sky-500 underline">Fundraiser</span> At a
           Time.
-        </div>
+        </motion.div>
 
         <div className="flex gap-20 justify-center mt-14">
-          <div className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-[#55C8ED]">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1, ease: "linear" }}
+            variants={{
+              visible: { opacity: 1, x: 0 },
+              hidden: { opacity: 0, x: -250 },
+            }}
+            className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-[#55C8ED]"
+          >
             <h1 className="text-3xl font-bold">{stats.projects}</h1>
             <h3 className="text-xl mt-3">Projects🔯</h3>
-          </div>
-          <div className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-red-400">
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 0.8 ,ease:"linear"}}
+            variants={{
+              visible: { opacity: 1, scale: 1 },
+              hidden: { opacity: 0, scale: 0.7 },
+            }}
+            className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-red-400"
+          >
             <h1 className="text-3xl font-bold">
               {stats.fundings.toFixed(3) + " AVAX"}
             </h1>
             <h3 className="text-xl mt-3">Funds Raised💵</h3>
-          </div>{" "}
-          <div className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-[#55C8ED]">
+          </motion.div>{" "}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1 }}
+            variants={{
+              visible: { opacity: 1, x: 0 },
+              hidden: { opacity: 0, x: 250 },
+            }}
+            className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-[#55C8ED]"
+          >
             <h1 className="text-3xl font-bold">{stats.contributors}</h1>
             <h3 className="text-xl mt-3">contributors👤</h3>
-          </div>
+          </motion.div>
         </div>
 
         {featuredRcmd.length !== 0 ? (
@@ -141,16 +186,35 @@ export default function HomeComponent(props) {
                 Project Of the Day!🌟
               </h1>
               <div className="flex gap-10 bg-[#f5f7f8] p-10 rounded-3xl">
-                <img
-                  className="bg-no-repeat bg-contain bg-center h-[450px] rounded-3xl"
-                  src={
-                    featuredRcmd[0].cid
-                      ? `url(${"https://" + featuredRcmd[0].cid})`
-                      : dummyPic
-                  }
-                  alt="Project_Photo"
-                />
-                <div>
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  transition={{ duration: 1 }}
+                  variants={{
+                    visible: { opacity: 1, x: 0 },
+                    hidden: { opacity: 0, x: -150 },
+                  }}
+                  className="w-full"
+                >
+                  <img
+                    className="bg-no-repeat bg-contain bg-center h-[450px] rounded-3xl"
+                    src={
+                      featuredRcmd[0].cid
+                        ? `url(${"https://" + featuredRcmd[0].cid})`
+                        : dummyPic
+                    }
+                    alt="Project_Photo"
+                  />
+                </motion.div>
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  transition={{ duration: 1 }}
+                  variants={{
+                    visible: { opacity: 1, x: 0 },
+                    hidden: { opacity: 0, x: 150 },
+                  }}
+                >
                   <div className="text-[#111] first-letter:uppercase text-3xl pt-5 font-bold">
                     {featuredRcmd[0].projectName}🔥
                   </div>
@@ -211,7 +275,7 @@ export default function HomeComponent(props) {
                       View Campaign
                     </button>
                   </Link>
-                </div>
+                </motion.div>
               </div>
               <div>
                 <h1 className="text-[#f5f7f8] text-2xl font-bold my-10 ">
