@@ -3,6 +3,8 @@ import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import dummyPic from "../assets/placeholderImage.jpg";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { motion } from "framer-motion";
+
 export default function ScrollShowbarComponent(props) {
   const scroll = (val) => {
     document.getElementsByClassName("recentUploadsContainer")[0].scrollLeft +=
@@ -11,7 +13,17 @@ export default function ScrollShowbarComponent(props) {
   const renderCards = () => {
     return props.recentUploads.map((project, index) => {
       return (
-        <div className="w-[300px]" key={index}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          transition={{ duration: `1.${index}`, ease: "linear" }}
+          variants={{
+            visible: { opacity: 1, x: 0 },
+            hidden: { opacity: 0, x: -100 },
+          }}
+          className="w-[300px]"
+          key={index}
+        >
           <Link to="/project" state={{ index: project.index }}>
             <img
               className=""
@@ -32,7 +44,7 @@ export default function ScrollShowbarComponent(props) {
             </div>
             <div className="">{"By " + project.creatorName}</div>
           </div>
-        </div>
+        </motion.div>
       );
     });
   };
