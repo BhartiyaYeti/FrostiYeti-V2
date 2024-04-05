@@ -1,13 +1,13 @@
 import HeroLogo from "../assets/Frame.png";
 import SubNav from "./SubNav";
-
+import { motion } from "framer-motion";
 export default function ConnectWallet(props) {
   return (
     <>
       <div>
         <SubNav connectMetamask={props} />
         <div className="px-44 h-[80vh] flex items-center justify-between">
-          <div
+          <motion.div
             initial="hidden"
             whileInView="visible"
             transition={{ duration: 1, ease: "linear" }}
@@ -37,7 +37,7 @@ export default function ConnectWallet(props) {
                 Learn More
               </h4>
             </div>
-          </div>
+          </motion.div>
           <div className="">
             <img
               src={HeroLogo}
