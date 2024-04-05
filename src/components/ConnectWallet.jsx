@@ -38,7 +38,6 @@ export default function ConnectWallet(props) {
               </h4>
             </div>
           </motion.div>
-<<<<<<< HEAD
           <motion.div
             className=""
             initial="hidden"
@@ -49,9 +48,6 @@ export default function ConnectWallet(props) {
               hidden: { opacity: 0 },
             }}
           >
-=======
-          <div className="">
->>>>>>> 7f43d14 (React Version Upgraded to latest)
             <img
               src={HeroLogo}
               alt=""
