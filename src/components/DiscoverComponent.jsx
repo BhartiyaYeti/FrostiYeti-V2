@@ -2,6 +2,7 @@ import CategoryComponent from "./CategoryComponent";
 import { useEffect, useState } from "react";
 import dummyPic from "../assets/placeholderImage.jpg";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function DiscoverComponent(props) {
   const location = useLocation();
@@ -62,7 +63,16 @@ export default function DiscoverComponent(props) {
     return projects.reverse().map((project, index) => {
       return (
         <Link to="/project" state={{ index: project.index }} key={index}>
-          <div className="">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: `1.${index}`, ease: "linear" }}
+            variants={{
+              visible: { opacity: 1, x: 0 },
+              hidden: { opacity: 0, x: -100 },
+            }}
+            className=""
+          >
             <div className="mb-10 bg-[#31363F] w-max p-3 rounded-xl h-[350px]">
               <img
                 className="w-[300px] rounded-xl"
@@ -87,7 +97,7 @@ export default function DiscoverComponent(props) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </Link>
       );
     });

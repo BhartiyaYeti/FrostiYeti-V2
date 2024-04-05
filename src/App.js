@@ -65,6 +65,7 @@ function App() {
       try {
         const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
         setMyContract(contract);
+        sessionStorage.setItem("IsContractThere", contract);
       } catch (err) {
         alert("CONTRACT_ADDRESS not set properly");
         console.log(err);

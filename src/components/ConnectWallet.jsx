@@ -10,10 +10,10 @@ export default function ConnectWallet(props) {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            transition={{ duration: 1, ease: "linear" }}
+            transition={{ duration: 1 }}
             variants={{
-              visible: { opacity: 1 },
-              hidden: { opacity: 0 },
+              visible: { opacity: 1, x: 0 },
+              hidden: { opacity: 0, x: -150 },
             }}
           >
             <h1 className="text-white text-6xl w-[750px] font-extrabold">
@@ -38,13 +38,22 @@ export default function ConnectWallet(props) {
               </h4>
             </div>
           </motion.div>
-          <div className="">
+          <motion.div
+            className=""
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1.5 }}
+            variants={{
+              visible: { opacity: 1 },
+              hidden: { opacity: 0 },
+            }}
+          >
             <img
               src={HeroLogo}
               alt=""
               className="absolute bottom-0 right-0 px-20"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </>
