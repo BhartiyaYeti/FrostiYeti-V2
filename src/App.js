@@ -12,7 +12,8 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import { abi } from "./abi";
 import SubNav from "./components/SubNav";
-const CONTRACT_ADDRESS = "0x1609bDd9c4e1e6cD3cAd9D1859bb86809ffF99F7";
+// const CONTRACT_ADDRESS = "0x1609bDd9c4e1e6cD3cAd9D1859bb86809ffF99F7";
+const CONTRACT_ADDRESS = "0xe68d23BdebEEDc27e00655C26f6A160d511A93D0";
 
 function App() {
   const [myContract, setMyContract] = useState(null);

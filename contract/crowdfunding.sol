@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.0 <0.9.0;
+pragma solidity ^0.8.5;
 
 contract crowdfunding{
     enum Category{
         DESIGNANDTECH,
-        FILM,
-        ARTS,
-        GAMES
+        EDUCATION,
+        RESEARCH
     }
 
     enum RefundPolicy{
