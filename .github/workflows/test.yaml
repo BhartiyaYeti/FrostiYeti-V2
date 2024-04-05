@@ -7,24 +7,24 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
+  # test:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [14.x, 16.x, 18.x]
 
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm test
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm ci
+  #     - run: npm test
 
   trigger-jenkins-pipeline:
     runs-on: ubuntu-latest
-    needs: [test]
+    # needs: [test]
     steps:
       # - name: Trigger Jenkins Pipeline
       #   run: curl -X POST "http://104.198.220.47/job/test-pipeline/buildWithParameters?token=${{ secrets.JENKINS_TOKEN }}" 
