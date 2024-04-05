@@ -4,9 +4,8 @@ pragma solidity >=0.8.0 <0.9.0;
 contract crowdfunding{
     enum Category{
         DESIGNANDTECH,
-        FILM,
-        ARTS,
-        GAMES
+        EDUCATION,
+        RESEARCH
     }
 
     enum RefundPolicy{
@@ -64,10 +63,15 @@ contract crowdfunding{
     mapping(address => Funded[]) addressFundingList;
 
     // Checks if an index is a valid index in projects array
-    modifier validIndex(uint256 _index) {
+    modifier isValidIndex(uint256 _index) {
         require(_index < projects.length, "Invalid Project Id");
         _;
     }
+
+    event ProjectCreated(address indexed creator, uint256 indexed projectIndex);
+    event ProjectFunded(address indexed contributor, uint256 indexed projectIndex, uint256 amount);
+    event FundsClaimed(address indexed creator, uint256 indexed projectIndex, uint256 amount);
+    event RefundClaimed(address indexed contributor, uint256 indexed projectIndex, uint256 amount);
 
     // Create a new project and updates the addressProjectsList and projects array
     function createNewProject(
@@ -100,6 +104,7 @@ contract crowdfunding{
             refundClaimed: new bool[](0)
         }));
         addressProjectsList[msg.sender].push(projects.length - 1);
+        emit ProjectCreated(msg.sender, projects.length - 1);
     }
 
     // Returns the project metadata of all entries in projects
@@ -161,7 +166,7 @@ contract crowdfunding{
     }
 
     // Returns the project at the given index
-    function getProject(uint256 _index) external view validIndex(_index) returns(Project memory project) {
+    function getProject(uint256 _index) external view isValidIndex(_index) returns(Project memory project) {
         return projects[_index];
     }
 
@@ -176,7 +181,7 @@ contract crowdfunding{
     }
 
     // Helper function adds details of Funding to addressFundingList
-    function addToFundingList(uint256 _index) internal validIndex(_index) {
+    function addToFundingList(uint256 _index) internal isValidIndex(_index) {
         for(uint256 i = 0; i < addressFundingList[msg.sender].length; i++) {
             if(addressFundingList[msg.sender][i].projectIndex == _index) {
                 addressFundingList[msg.sender][i].totalAmount += msg.value;
@@ -187,7 +192,7 @@ contract crowdfunding{
     }
 
     // Helper fundtion adds details of funding to the project in projects array
-    function addContribution(uint256 _index) internal validIndex(_index)  {
+    function addContribution(uint256 _index) internal isValidIndex(_index)  {
         for(uint256 i = 0; i < projects[_index].contributors.length; i++) {
             if(projects[_index].contributors[i] == msg.sender) {
                 projects[_index].amount[i] += msg.value;
@@ -204,26 +209,28 @@ contract crowdfunding{
     }
 
     // Funds the projects at given index
-    function fundProject(uint256 _index) payable external validIndex(_index)  {
+    function fundProject(uint256 _index) payable external isValidIndex(_index)  {
         require(projects[_index].creatorAddress != msg.sender, "You are the project owner");
-        require(projects[_index].duration + projects[_index].creationTime >= block.timestamp, "Project Funding Time Expired");
+        require(block.timestamp <= projects[_index].duration + projects[_index].creationTime, "Project Funding Time Expired");
         addContribution(_index);
         projects[_index].amountRaised += msg.value;
+        emit ProjectFunded(msg.sender, _index, msg.value);
     }
 
     // Helps project creator to transfer the raised funds to his address
-    function claimFund(uint256 _index) validIndex(_index) external {
+    function claimFund(uint256 _index) isValidIndex(_index) external {
         require(projects[_index].creatorAddress == msg.sender, "You are not Project Owner");
-        require(projects[_index].duration + projects[_index].creationTime < block.timestamp, "Project Funding Time Not Expired");
+        require(block.timestamp >= projects[_index].duration + projects[_index].creationTime, "Project Funding Time Not Expired");
         require(projects[_index].refundPolicy == RefundPolicy.NONREFUNDABLE 
                     || projects[_index].amountRaised >= projects[_index].fundingGoal, "Funding goal not reached");
         require(!projects[_index].claimedAmount, "Already claimed raised funds");
         projects[_index].claimedAmount = true;
         payable(msg.sender).transfer(projects[_index].amountRaised);
+        emit FundsClaimed(msg.sender, _index, projects[_index].amountRaised);
     }
 
     // Helper function to get the contributor index in the projects' contributor's array
-    function getContributorIndex(uint256 _index) validIndex(_index) internal view returns(int256) {
+    function getContributorIndex(uint256 _index) isValidIndex(_index) internal view returns(int256) {
         int256 contributorIndex = -1;
         for(uint256 i = 0; i < projects[_index].contributors.length; i++) {
             if(msg.sender == projects[_index].contributors[i]) {
@@ -235,8 +242,8 @@ contract crowdfunding{
     }
 
     // Enables the contributors to claim refund when refundable project doesn't reach its goal
-    function claimRefund(uint256 _index) validIndex(_index) external {
-        require(projects[_index].duration + projects[_index].creationTime < block.timestamp, "Project Funding Time Not Expired");
+    function claimRefund(uint256 _index) isValidIndex(_index) external {
+        require(block.timestamp >= projects[_index].duration + projects[_index].creationTime, "Project Funding Time Not Expired");
         require(projects[_index].refundPolicy == RefundPolicy.REFUNDABLE 
                     && projects[_index].amountRaised < projects[_index].fundingGoal, "Funding goal not reached");
         
