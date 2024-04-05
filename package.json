@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
     "ethers": "^5.5.3",
     "framer-motion": "^11.0.24",
     "ipfs-http-client": "^55.0.0",
@@ -28,15 +25,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3",
+    "hardhat": "^2.21.0",
+    "tailwindcss": "^3.4.3"
   },
   "browserslist": {
     "production": [
@@ -49,10 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^3.2.3",
-    "hardhat": "^2.21.0",
-    "tailwindcss": "^3.4.3"
   }
 }
