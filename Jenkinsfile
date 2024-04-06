@@ -28,8 +28,8 @@ pipeline {
                     sh """
                     gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}
                     gcloud auth configure-docker
-                    docker build -t frostyyeti-react .
-                    docker push gcr.io/frostyyeti/frostyyeti-react
+                    docker build -t edulink-react .
+                    docker push gcr.io/frostyyeti/edulink-react
                     """
                 }
             }
