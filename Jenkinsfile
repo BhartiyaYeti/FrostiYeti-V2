@@ -29,7 +29,8 @@ pipeline {
                     gcloud auth activate-service-account --key-file=${SERVICE_ACCOUNT_KEY}
                     gcloud auth configure-docker
                     docker build -t edulink-react .
-                    docker push gcr.io/frostyyeti/edulink-react
+                    docker tag edulink-react gcr.io/frostyyeti/edulink-react:latest
+                    docker push gcr.io/frostyyeti/edulink-react:latest
                     """
                 }
             }
