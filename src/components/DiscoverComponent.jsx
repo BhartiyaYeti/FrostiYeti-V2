@@ -75,7 +75,7 @@ export default function DiscoverComponent(props) {
           >
             <div className="mb-10 bg-[#31363F] w-max p-3 rounded-xl h-[350px]">
               <img
-                className="w-[300px] rounded-xl"
+                className="w-[350px] rounded-xl"
                 src={
                   project.cid ? `url(${"https://" + project.cid})` : dummyPic
                 }
@@ -119,7 +119,7 @@ export default function DiscoverComponent(props) {
             Explore<span className="text-white">!</span>
           </div>
         </center>
-        <div className="flex flex-wrap gap-10 mt-10 px-10 min-h-min">
+        <div className="flex flex-wrap gap-x-16 gap-y-10 mt-10 px-10 min-h-min justify-center">
           {projects.length !== 0 ? (
             renderCards()
           ) : (
