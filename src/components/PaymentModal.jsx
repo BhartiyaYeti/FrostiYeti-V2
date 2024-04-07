@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { ethers } from "ethers";
 import { AiOutlineClose } from "react-icons/ai";
+import Loader from "./Loader";
+import Modal from "./Modal";
 
 function PaymentModal(props) {
   let [amount, setAmount] = useState();
+  const [showLoader, setShowLoader] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [modalText, setModalText] = useState("")
   const PRECISION = 10 ** 18;
 
   // sets the modalShow state to false to disable rendering of modal
@@ -25,10 +30,14 @@ function PaymentModal(props) {
       return;
     }
     try {
+      setShowLoader(true)
       let fund = { value: ethers.utils.parseEther(amount.toString()) };
       let txn = await props.contract.fundProject(props.index, fund);
       await txn.wait();
-      alert(`${amount} AVAX Succesfully funded`);
+      setShowLoader(false)
+      setModalText(`${amount} AVAX Succesfully funded`)
+      setShowModal(true)
+      // alert(`${amount} AVAX Succesfully funded`);
 
       setAmount(1);
       closeModal();
@@ -36,7 +45,10 @@ function PaymentModal(props) {
       console.log("Funding error: ");
       console.log(error);
       console.log("................");
-      alert("Error Sending AVAX");
+      // alert("Error Sending AVAX");
+      setShowLoader(false)
+      setModalText("Error Sending AVAX")
+      setShowModal(true)
     }
   }
 
@@ -73,6 +85,8 @@ function PaymentModal(props) {
           >
             Fund
           </button>
+          {showLoader && <Loader loaderText="Please be patient! We are processing your transaction..." />}
+          {showModal && <Modal modalInfoText={modalText} setShowModal={setShowModal} /> }
         </div>
       </div>
     </div>

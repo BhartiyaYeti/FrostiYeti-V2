@@ -39,21 +39,14 @@ export default function CategoryComponent(props) {
         tabIndex="1"
         onClick={() => onClickFilter(1)}
       >
-        Film
+        Education
       </h1>
       <h1
         className=" text-base hover:underline-offset-8 hover:underline hover:cursor-pointer decoration-sky-500"
         tabIndex="1"
         onClick={() => onClickFilter(2)}
       >
-        Arts
-      </h1>
-      <h1
-        className=" text-base hover:underline-offset-8 hover:underline hover:cursor-pointer decoration-sky-500"
-        tabIndex="1"
-        onClick={() => onClickFilter(3)}
-      >
-        Games
+        Research
       </h1>
     </div>
   );

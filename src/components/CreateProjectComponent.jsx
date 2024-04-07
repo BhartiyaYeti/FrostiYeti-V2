@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { create } from "ipfs-http-client";
 import { Web3Storage } from "web3.storage";
+import Loader from "./Loader";
+import Modal from "./Modal";
 
 function CreateProjectComponent(props) {
   const [formInput, setFormInput] = useState({
@@ -16,6 +18,9 @@ function CreateProjectComponent(props) {
   });
 
   const [inputImage, setInputImage] = useState(null);
+  const [showLoader, setShowLoader] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [modalText, setModalText] = useState("")
 
   // set the form input state if input changes
   function handleChange(e) {
@@ -36,9 +41,8 @@ function CreateProjectComponent(props) {
   function getCategoryCode() {
     let categoryCode = {
       "design and tech": 0,
-      film: 1,
-      arts: 2,
-      games: 3,
+      "education": 1,
+      "research": 2
     };
     return categoryCode[formInput["category"]];
   }
@@ -78,7 +82,7 @@ function CreateProjectComponent(props) {
     // check for double submit (since the formInput['category']) is changed to integer on first submit
     // if not checked, second submit gives undefined value since getCategoryCode() doesn't have any mapping for integer code.
     e.preventDefault();
-
+    setShowLoader(true)
     if (!Number.isInteger(formInput["category"])) {
       formInput["category"] = getCategoryCode();
     }
@@ -106,13 +110,19 @@ function CreateProjectComponent(props) {
         formInput["category"],
         formInput["refundPolicy"]
       );
-
+      
       await txn.wait(txn);
-      alert("Project creation complete!!");
-      document.getElementsByName("projectForm")[0].reset();
-      return false;
+      setShowLoader(false)
+      // alert("Project creation complete!!");
+      setModalText("Project creation complete!!")
+      setShowModal(true)
+      document.getElementById("project-form").reset();
+      // return false;
     } catch (error) {
-      alert("Error on calling function: " + error);
+      setShowLoader(false)
+      setModalText("Error on calling function: " + error)
+      setShowModal(true)
+      // alert("Error on calling function: " + error);
       console.log(error);
     }
   }
@@ -123,11 +133,11 @@ function CreateProjectComponent(props) {
         Create Campaign
       </h1>
       <center>
-        <div className="bg-[#f5f7f8] w-[50%] my-10 rounded-2xl">
+        <form className="bg-[#f5f7f8] w-[50%] my-10 rounded-2xl" id="project-form">
           <div className="flex gap-10  p-10 rounded-3xl text-start">
             <div className="w-full ">
-              <div>
-                <h3>Campaign Name:</h3>
+              <div className="mb-4">
+                <h3 className="mb-1">Campaign Name:</h3>
                 <input
                   name="projectName"
                   placeholder="  Enter The Campaign Name"
@@ -135,8 +145,8 @@ function CreateProjectComponent(props) {
                   onChange={handleChange}
                 />
               </div>
-              <div>
-                <h3>Campaign Story:</h3>
+              <div className="mb-4">
+                <h3 className="mb-1">Campaign Story:</h3>
                 <textarea
                   name="description"
                   placeholder="  Write Back Story..."
@@ -146,20 +156,19 @@ function CreateProjectComponent(props) {
                   onChange={handleChange}
                 />
               </div>
-              <div>
-                <h3>Campaign Category:</h3>
+              <div className="mb-4">
+                <h3 className="mb-1">Campaign Category:</h3>
                 <select name="category" required onChange={handleChange}>
                   <option value="" selected disabled hidden>
                     Select category
                   </option>
                   <option value="design and tech">Design and Tech</option>
-                  <option value="film">Film</option>
-                  <option value="arts">Arts</option>
-                  <option value="games">Games</option>
+                  <option value="education">Education</option>
+                  <option value="research">Research</option>
                 </select>
               </div>
-              <div>
-                <h3>Campaign Link:</h3>
+              <div className="mb-4">
+                <h3 className="mb-1">Campaign Link:</h3>
                 <input
                   type="url"
                   name="link"
@@ -169,8 +178,8 @@ function CreateProjectComponent(props) {
               </div>
             </div>
             <div className="w-full">
-              <div>
-                <h3>Creator Name:</h3>
+              <div className="mb-4">
+                <h3 className="mb-1">Creator Name:</h3>
                 <input
                   name="creatorName"
                   placeholder="  Enter Creator Name"
@@ -178,8 +187,8 @@ function CreateProjectComponent(props) {
                   onChange={handleChange}
                 />
               </div>
-              <div>
-                <h3>Funding Goal(AVAX)</h3>
+              <div className="mb-4">
+                <h3 className="mb-1">Funding Goal(AVAX)</h3>
                 <input
                   type="number"
                   step="any"
@@ -189,19 +198,19 @@ function CreateProjectComponent(props) {
                   onChange={handleChange}
                 />
               </div>
-              <div>
-                <h3>Duration in Minitus</h3>
+              <div className="mb-4">
+                <h3 className="mb-1">Duration in Minutes</h3>
                 <input
                   type="number"
                   name="duration"
-                  placeholder="  Enter the duration"
+                  placeholder=" Enter the duration"
                   min="1"
                   required
                   onChange={handleChange}
                 />
               </div>
-              <div>
-                <h3>Refund Policy</h3>
+              <div className="mb-4">
+                <h3 className="mb-1">Refund Policy</h3>
                 <select name="refundPolicy" required onChange={handleChange}>
                   <option value="" selected disabled hidden>
                     Select Refund type
@@ -218,8 +227,11 @@ function CreateProjectComponent(props) {
           >
             Save
           </button>
-        </div>
+          
+        </form>
       </center>
+      {showLoader && <Loader loaderText="Your project is being created" />}
+      {showModal && <Modal modalInfoText={modalText} setShowModal={setShowModal} /> }
     </>
   );
 }

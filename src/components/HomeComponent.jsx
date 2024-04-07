@@ -147,7 +147,7 @@ export default function HomeComponent(props) {
             className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-[#55C8ED]"
           >
             <h1 className="text-3xl font-bold">{stats.projects}</h1>
-            <h3 className="text-xl mt-3">Projects🔯</h3>
+            <h3 className="text-xl mt-3">Projects 🔯</h3>
           </motion.div>
           <motion.div
             initial="hidden"
@@ -162,7 +162,7 @@ export default function HomeComponent(props) {
             <h1 className="text-3xl font-bold">
               {stats.fundings.toFixed(3) + " AVAX"}
             </h1>
-            <h3 className="text-xl mt-3">Funds Raised💵</h3>
+            <h3 className="text-xl mt-3">Funds Raised 💵</h3>
           </motion.div>{" "}
           <motion.div
             initial="hidden"
@@ -175,7 +175,7 @@ export default function HomeComponent(props) {
             className="bg-[#EEEEEE] text-black w-[200px] h-[120px] flex-col text-center py-6 rounded-md hover:scale-105 hover:cursor-pointer hover:bg-[#55C8ED]"
           >
             <h1 className="text-3xl font-bold">{stats.contributors}</h1>
-            <h3 className="text-xl mt-3">contributors👤</h3>
+            <h3 className="text-xl mt-3">contributors 👤</h3>
           </motion.div>
         </div>
 

@@ -6,6 +6,8 @@ import dummyPic from "../assets/placeholderImage.jpg";
 import { MdOutlineCategory } from "react-icons/md";
 import Popup from "reactjs-popup";
 import { GiPayMoney } from "react-icons/gi";
+import Loader from "./Loader";
+import Modal from "./Modal";
 // import "reactjs-popup/dist/index.css";
 function ProjectComponent(props) {
   const [modalShow, setModalShow] = useState(false);
@@ -27,6 +29,9 @@ function ProjectComponent(props) {
   const [timerString, setTimerString] = useState("");
   const [isOver, setIsOver] = useState(false);
   const location = useLocation();
+  const [showLoader, setShowLoader] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [modalText, setModalText] = useState("")
   const { index } = location.state;
   const PRECISION = 10 ** 18;
 
@@ -156,8 +161,8 @@ function ProjectComponent(props) {
 
   // return category code
   function getCategoryFromCode(val) {
-    let categoryCode = ["Design & Tech", "Film", "Arts", "Games"];
-    if (val >= 0 && val < 4) return categoryCode[val];
+    let categoryCode = ["Design & Tech", "Education", "Research"];
+    if (val >= 0 && val < 3) return categoryCode[val];
   }
 
   // convert epoch time format to dd/mm/yyyy format
@@ -184,10 +189,14 @@ function ProjectComponent(props) {
   async function claimFund() {
     let txn;
     try {
+      setShowLoader(true)
       txn = await props.contract.claimFund(parseInt(index));
       await txn.wait(txn);
-      alert("Fund succesfully claimed");
-
+      setShowLoader(false)
+      setModalText("Fund succesfully claimed")
+      setShowModal(true)
+      // alert("Fund succesfully claimed");
+    
       setProjectDetails({
         amountRaised: projectDetails.amountRaised,
         cid: projectDetails.cid,
@@ -207,7 +216,10 @@ function ProjectComponent(props) {
         claimedAmount: true,
       });
     } catch (error) {
-      alert("Error claiming fund: " + error);
+      setShowLoader(false)
+      setModalText(`Error claiming fund: ${error}`)
+      setShowModal(true)
+      // alert("Error claiming fund: " + error);
       console.log(error);
     }
   }
@@ -488,6 +500,8 @@ function ProjectComponent(props) {
           </div>
         </div>
       </div>
+      {showLoader && <Loader loaderText="Please be patient! We are processing your transaction..." />}
+      {showModal && <Modal modalInfoText={modalText} setShowModal={setShowModal} /> }
     </>
   );
 }
