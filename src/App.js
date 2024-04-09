@@ -11,7 +11,7 @@ import ProfileComponent from "./components/ProfileComponent";
 import { useState } from "react";
 import { ethers } from "ethers";
 import { abi } from "./abi";
-import SubNav from "./components/SubNav";
+import Snow from "./components/Snow";
 // const CONTRACT_ADDRESS = "0x1609bDd9c4e1e6cD3cAd9D1859bb86809ffF99F7";
 // const CONTRACT_ADDRESS = "0xe68d23BdebEEDc27e00655C26f6A160d511A93D0";
 const CONTRACT_ADDRESS = "0x781df2b1C540027Df6e118184D4dDaF80b7a32d6";
@@ -95,43 +95,48 @@ function App() {
       component
     );
   };
+
   return (
-    <div className="app">
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        {myContract && <NavbarComponent address={address} />}
-        <Routes>
-          <Route
-            path="/"
-            element={checkConnected(<HomeComponent contract={myContract} />)}
-          />
-          <Route
-            path="create_project"
-            element={checkConnected(
-              <CreateProjectComponent contract={myContract} />
-            )}
-          />
-          <Route
-            path="discover"
-            element={checkConnected(
-              <DiscoverComponent contract={myContract} />
-            )}
-          />
-          <Route
-            path="profile"
-            element={checkConnected(
-              <ProfileComponent contract={myContract} userAddress={address} />
-            )}
-          />
-          <Route
-            path="project"
-            element={checkConnected(
-              <ProjectComponent contract={myContract} userAddress={address} />
-            )}
-          />
-        </Routes>
-        {myContract && <FooterComponent />}
-      </BrowserRouter>
-    </div>
+    <>
+      <div className="app">
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+          {myContract && <NavbarComponent address={address} />}
+
+          <Routes>
+            <Route
+              path="/"
+              element={checkConnected(<HomeComponent contract={myContract} />)}
+            />
+            <Route
+              path="create_project"
+              element={checkConnected(
+                <CreateProjectComponent contract={myContract} />
+              )}
+            />
+            <Route
+              path="discover"
+              element={checkConnected(
+                <DiscoverComponent contract={myContract} />
+              )}
+            />
+            <Route
+              path="profile"
+              element={checkConnected(
+                <ProfileComponent contract={myContract} userAddress={address} />
+              )}
+            />
+            <Route
+              path="project"
+              element={checkConnected(
+                <ProjectComponent contract={myContract} userAddress={address} />
+              )}
+            />
+          </Routes>
+          {myContract && <FooterComponent />}
+        </BrowserRouter>
+      </div>
+      <Snow />
+    </>
   );
 }
 
