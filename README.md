@@ -393,7 +393,7 @@ npm install
 
 In our React application we keep all the React components in the `src/components` directory.
 
-## ConnectWallet
+### ConnectWallet
 
 This component renders the first page of the site. It contains a **Connect to metamask** button, which allows you to connect your Metamask account to the dApp.
 
@@ -409,39 +409,47 @@ It renders a form for creating a new project. The form has various inputs, requi
 
 The project component renders all the details about an individual project. At the top, it displays the project name and image, then the total funding it received till now, the number of unique people who funded the project and a button for a user to fund the project with AVAX. After that, it displays the project description and other project information such as project owner name, project link, refund policy, project category and creation date. At the bottom, a table is rendered, listing all the contributors who contributed to the project to date and the amount they contributed, sorted in the descending order of amount contributed.
 
-## PaymentModal
+### PaymentModal
 
 This component renders the modal for payment upon clicking the **back this project** button. The modal has an input for the amount of AVAX you want to fund and a **fund** button to send the fund to the contract. The modal automatically closes once the transfer of the AVAX token is successful.
 
-## ProfileComponent
+### ProfileComponent
 
 This component renders the profile information of a user. This component has three sections, namely **Ongoing projects** section, **Completed projects** section and **Projects funded** section. The **Ongoing projects** section displays all the projects that the user has created and the funding period for which hasn't ended yet. The **Completed projects** section displays all the projects that the user has created and the funding period for which is over. **Projects funded** section displays all the projects to which the user has provided some funding. The **Projects funded** section isn't rendered if you visit some other user's profile.  
 To visit your profile, click the account address displayed on the right end of the navbar.
 
-## DiscoverComponent
+### DiscoverComponent
 
 This component renders a list of projects posted on the site, based on the project category selected. There are four categories, namely Design & tech, Film, Arts and Games.
 
-## ScrollShowbarComponent
+### ScrollShowbarComponent
 
 This component renders a carousel which is used by various other components to display a list of projects.
 
 Don't forget to change the contract address in `App.js` file before starting up the React app.
 
-# Walkthrough
+## Walkthrough
 
 You can check out the live demo of the dApp [here](https://edulinkv1.vercel.app/)
 
-# DevOps Architecture
+## DevOps Architecture
 
 ![Image displaying DevOps_architecture](https://github.com/BhartiyaYeti/FrostiYeti-V2/blob/readme/readme-demo-image/Devops%20Architecture.png)
 
-The above image displays the architecture of the CI/CD.
+The above image displays the architecture of the CI/CD implementation of the project.
 
-# Conclusion
+## Conclusion
 
 Congratulations! We have successfully developed a working decentralized crowdfunding application where users can create projects, fund various projects and even claim refunds if possible. As a next step, you can try adding new features to the dApp, such as Account Abstraction, Proof of Impact or KYC Verification.
 
-# References
+## References
 
 [Deploy a smart contract on Avalanche using Remix and Metamask](https://docs.avax.network/build/tutorials/smart-contracts/deploy-a-smart-contract-on-avalanche-using-remix-and-metamask/)
+
+[Create a React App](https://create-react-app.dev/docs/getting-started)
+
+[Implement Tailwind with React](https://tailwindcss.com/docs/guides/create-react-app)
+
+[Interact with the smart contract from front-end using Ethers.js Library](https://docs.ethers.org/v6/)
+
+[Read our project report for a in-depth knowledge on EduLink](https://docs.google.com/document/d/1i6nr0wlfbIXPYR4l1d97f1mRLYBbXOqW2-WKtfkunyA/)
