@@ -348,7 +348,7 @@ We have now completed the smart contract implementation. Now let's move to contr
 
 Log in to Metamask -> Click the Network drop-down -> Select custom RPC
 
-![image of metamask](https://raw.githubusercontent.com/figment-networks/learn-tutorials/master/assets/create-an-amm-on-avalanche_metamask.png)
+![image of metamask](https://github.com/BhartiyaYeti/FrostiYeti-V2/blob/readme/readme-demo-image/Metamask.png)
 
 #### FUJI Tesnet Settings:
 
@@ -364,7 +364,7 @@ Fund your address from the Avalanche testnet [faucet](https://faucet.avax-test.n
 
 Open [Remix](https://remix.ethereum.org/) --> Select Solidity
 
-![Picture of Remix site](https://raw.githubusercontent.com/figment-networks/learn-tutorials/master/assets/create-an-amm-on-avalanche_remix.png)
+![Picture of Remix site](https://github.com/BhartiyaYeti/FrostiYeti-V2/blob/readme/readme-demo-image/Remix.png)
 
 Create a `crowdfunding.sol` file in the Remix file explorer and add the functions explained above.
 
@@ -434,7 +434,7 @@ You can check out the live demo of the dApp [here](https://edulinkv1.vercel.app/
 
 # DevOps Architecture
 
-![Image displaying DevOps_architecture](https://github.com/BhartiyaYeti/FrostiYeti-V2/blob/2d3ba027caf2200f6cbef6837f39d1edeb32e9e5/Devops%20Architecture.png)
+![Image displaying DevOps_architecture](https://github.com/BhartiyaYeti/FrostiYeti-V2/blob/readme/readme-demo-image/Devops%20Architecture.png)
 
 The above image displays the architecture of the CI/CD.
 
