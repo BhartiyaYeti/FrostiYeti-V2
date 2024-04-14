@@ -247,9 +247,12 @@ function ProjectComponent(props) {
   async function claimRefund() {
     let txn;
     try {
+      setShowLoader(true)
       txn = await props.contract.claimRefund(parseInt(index));
       await txn.wait(txn);
-      alert("Refund claimed succesfully");
+      setShowLoader(false)
+      setModalText("Refund succesfully claimed")
+      setShowModal(true)
       let refundClaimedCopy = [...projectDetails.refundClaimed];
       refundClaimedCopy[getContributorIndex()] = true;
 
@@ -272,7 +275,9 @@ function ProjectComponent(props) {
         claimedAmount: true,
       });
     } catch (error) {
-      alert("Error claiming refund: " + error);
+      setShowLoader(false)
+      setModalText(`Error claiming fund: ${error}`)
+      setShowModal(true)
       console.log(error);
     }
   }
@@ -412,6 +417,9 @@ function ProjectComponent(props) {
                       setProjectDetails={setProjectDetails}
                       userAddress={props.userAddress}
                       close={close}
+                      setShowLoader={setShowLoader}
+                      setShowModal={setShowModal}
+                      setModalText={setModalText}
                     />
                   )}
                 </Popup>
@@ -450,6 +458,7 @@ function ProjectComponent(props) {
           </div>
         </div>
         {modalShow && (
+          (close) => (
           <PaymentModal
             setModalShow={setModalShow}
             contract={props.contract}
@@ -457,8 +466,12 @@ function ProjectComponent(props) {
             projectDetails={projectDetails}
             setProjectDetails={setProjectDetails}
             userAddress={props.userAddress}
+            setShowLoader={setShowLoader}
+            setShowModal={setShowModal}
+            setModalText={setModalText}
+            close={close}
           />
-        )}
+        ))}
       </div>
 
       <div className="px-16 my-10 text-[#EEE]">

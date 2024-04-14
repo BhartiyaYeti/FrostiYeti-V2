@@ -5,10 +5,11 @@ import Loader from "./Loader";
 import Modal from "./Modal";
 
 function PaymentModal(props) {
+  console.log(props)
   let [amount, setAmount] = useState();
-  const [showLoader, setShowLoader] = useState(false)
-  const [showModal, setShowModal] = useState(false)
-  const [modalText, setModalText] = useState("")
+  // const [showLoader, setShowLoader] = useState(false)
+  // const [showModal, setShowModal] = useState(false)
+  // const [modalText, setModalText] = useState("")
   const PRECISION = 10 ** 18;
 
   // sets the modalShow state to false to disable rendering of modal
@@ -24,31 +25,33 @@ function PaymentModal(props) {
   // call function in the smart contract to send AVAX token
   // to fund the project
   async function sendFund() {
+    props.close()
     console.log("Sending fund...");
     if (amount <= 0) {
       alert("Amount is less than or equal to 0");
       return;
     }
     try {
-      setShowLoader(true)
+      
+      props.setShowLoader(true)
       let fund = { value: ethers.utils.parseEther(amount.toString()) };
       let txn = await props.contract.fundProject(props.index, fund);
       await txn.wait();
-      setShowLoader(false)
-      setModalText(`${amount} AVAX Succesfully funded`)
-      setShowModal(true)
+      props.setShowLoader(false)
+      props.setModalText(`${amount} AVAX Succesfully funded`)
+      props.setShowModal(true)
       // alert(`${amount} AVAX Succesfully funded`);
 
       setAmount(1);
-      closeModal();
+      // closeModal();
     } catch (error) {
       console.log("Funding error: ");
       console.log(error);
       console.log("................");
       // alert("Error Sending AVAX");
-      setShowLoader(false)
-      setModalText("Error Sending AVAX")
-      setShowModal(true)
+      props.setShowLoader(false)
+      props.setModalText("Error Sending AVAX")
+      props.setShowModal(true)
     }
   }
 
@@ -85,11 +88,11 @@ function PaymentModal(props) {
           >
             Fund
           </button>
-          {showLoader && <Loader loaderText="Please be patient! We are processing your transaction..." />}
-          {showModal && <Modal modalInfoText={modalText} setShowModal={setShowModal} /> }
+          
         </div>
       </div>
     </div>
+    
   );
 }
 
