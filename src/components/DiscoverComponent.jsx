@@ -87,7 +87,7 @@ export default function DiscoverComponent(props) {
                 </div>
                 <div className="text-[#EEE] text-md w-[300px]">
                   About Campaign:{" "}
-                  {project.projectDescription.slice(0, 100) + "..."}
+                  {project.projectDescription.slice(0, 50) + "..."}
                 </div>
                 <div className="text-[#EEE] first-letter:uppercase text-md mt-3">
                   Campaign By{"  "}

@@ -1,11 +1,13 @@
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import EdbucksLogo from "../assets/edBucksLogo.svg";
+import React from "react";
 
 export default function NavbarComponent(props) {
   const navigate = useNavigate();
   return (
     <nav>
-      <div className="flex justify-between px-16 py-5 align-middle items-baseline">
+      <div className="flex justify-between px-16 py-5 align-middle  items-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -17,7 +19,7 @@ export default function NavbarComponent(props) {
           className="text-white text-4xl font-bold hover:cursor-pointer"
           onClick={() => navigate("/")}
         >
-          EduLink<span className="text-[#55C8ED]">!</span>
+            <img src={EdbucksLogo} alt="" className="h-[3rem]"/>
         </motion.div>
         <motion.div
           initial="hidden"

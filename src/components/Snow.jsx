@@ -60,7 +60,7 @@ function Snow() {
             },
           },
           size: {
-            value: 11.83721462448409,
+            value: 8,
             random: true,
             anim: {
               enable: false,

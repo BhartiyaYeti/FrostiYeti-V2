@@ -8,8 +8,8 @@ describe('ConnectWallet', () => {
     const mockConnectMetamask = jest.fn();
     render(<ConnectWallet connectMetamask={mockConnectMetamask} />);
 
-    // Check that the text 'EduLink' is in the document
-    expect(screen.getByText('EduLink')).toBeInTheDocument();
+    // Check that the text 'Edbucks' is in the document
+    expect(screen.getByText('Edbucks')).toBeInTheDocument();
 
     // Check that the button is in the document and clickable
     const button = screen.getByRole('button', { name: /connect to metamask/i });

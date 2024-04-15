@@ -2,8 +2,8 @@
 
 ## Introduction
 
-EduLink represents a pioneering venture in the realm of blockchain-based crowdfunding, specifically tailored to revolutionize the funding landscape for research and educational grants. In a world where traditional crowdfunding platforms grapple with challenges such as high fees, lack of transparency, and geographical limitations, EduLink emerges as a beacon of innovation and inclusivity. By harnessing the transformative power of blockchain technology, EduLink aims to democratize access to capital, empower creators, and drive positive social impact across the education sector.
-At its core, EduLink leverages the immutable and decentralized nature of blockchain to establish a transparent and efficient crowdfunding platform. Built on the Avalanche blockchain, EduLink operates as a decentralized application (DApp), enabling creators to submit grant proposals for research projects, educational initiatives, and academic endeavors. Through the seamless integration of blockchain technology, EduLink eliminates the need for intermediaries, reducing costs, enhancing transparency, and fostering trust between creators and backers.
+Edbucks represents a pioneering venture in the realm of blockchain-based crowdfunding, specifically tailored to revolutionize the funding landscape for research and educational grants. In a world where traditional crowdfunding platforms grapple with challenges such as high fees, lack of transparency, and geographical limitations, Edbucks emerges as a beacon of innovation and inclusivity. By harnessing the transformative power of blockchain technology, Edbucks aims to democratize access to capital, empower creators, and drive positive social impact across the education sector.
+At its core, Edbucks leverages the immutable and decentralized nature of blockchain to establish a transparent and efficient crowdfunding platform. Built on the Avalanche blockchain, Edbucks operates as a decentralized application (DApp), enabling creators to submit grant proposals for research projects, educational initiatives, and academic endeavors. Through the seamless integration of blockchain technology, Edbucks eliminates the need for intermediaries, reducing costs, enhancing transparency, and fostering trust between creators and backers.
 This tutorial will show you how to use an Avalanche C-Chain dApp to create a crowdfunding platform.
 
 ## Audience
@@ -452,4 +452,4 @@ Congratulations! We have successfully developed a working decentralized crowdfun
 
 [Interact with the smart contract from front-end using Ethers.js Library](https://docs.ethers.org/v6/)
 
-[Read our project report for a in-depth knowledge on EduLink](https://docs.google.com/document/d/1i6nr0wlfbIXPYR4l1d97f1mRLYBbXOqW2-WKtfkunyA/)
+[Read our project report for a in-depth knowledge on Edbucks](https://docs.google.com/document/d/1i6nr0wlfbIXPYR4l1d97f1mRLYBbXOqW2-WKtfkunyA/)

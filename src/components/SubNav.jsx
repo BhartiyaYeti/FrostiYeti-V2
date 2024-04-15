@@ -1,10 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import EdbucksLogo from "../assets/edBucksLogo.svg";
+
 
 const SubNav = (props) => {
   console.log(props.connectMetamask.connectMetamask);
   return (
-    <nav className="flex justify-between px-16 py-5">
+    <nav className="flex justify-between items-center px-16 py-5 ">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -15,7 +17,7 @@ const SubNav = (props) => {
         }}
         className="text-white text-4xl font-bold"
       >
-        EduLink
+          <img src={EdbucksLogo} alt="" className="h-[3rem]"/>
       </motion.div>
       <motion.div
         initial="hidden"
