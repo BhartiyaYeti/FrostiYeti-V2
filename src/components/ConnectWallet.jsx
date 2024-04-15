@@ -20,7 +20,7 @@ export default function ConnectWallet(props) {
               <span className="inline-block mb-5">Now</span>
               <br></br>
               <span className="inline-block mb-5 text-[#55C8ED]">
-                Everyone <span className="text-white"> Get</span>
+                Everyone <span className="text-white"> Gets a</span>
               </span>
               <span className="inline-block mb-8">Chance to Learn🚀</span>
             </h1>
@@ -30,12 +30,16 @@ export default function ConnectWallet(props) {
               DApp, igniting innovation and empowering student success!
             </h4>
             <div className="flex align-baseline justify-start gap-10 items-center">
-              <button className="text-black bg-[#55C8ED] py-3 px-10 hover:bg-white transition ease-in-out font-bold">
-                Contact Us
-              </button>
-              <h4 className="text-white underline hover:cursor-pointer">
-                Learn More
-              </h4>
+              <a href="https://linktr.ee/EdBucksX?utm_source=qr_code">
+                <button className="text-black bg-[#55C8ED] py-3 px-10 hover:bg-white transition ease-in-out font-bold">
+                  Contact Us
+                </button>
+              </a>
+              <a href="https://docs.google.com/document/d/1i6nr0wlfbIXPYR4l1d97f1mRLYBbXOqW2-WKtfkunyA/edit?tab=t.0#heading=h.2gazcsgmxkub">
+                <h4 className="text-white underline hover:cursor-pointer">
+                  Learn More
+                </h4>
+              </a>
             </div>
           </motion.div>
           <motion.div
