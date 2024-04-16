@@ -25,8 +25,8 @@ export default function ConnectWallet(props) {
               <span className="inline-block mb-8">Chance to Learn 🚀</span>
             </h1>
 
-            <h4 className="text-white w-[75%] mb-10 font-medium text-xl">
-              Spark academic dreams with our blockchain-powered Studentfunding
+            <h4 className="text-white w-[75%] mb-10 font-normal text-xl">
+              Spark academic dreams with our blockchain-powered Student funding
               DApp, igniting innovation and empowering student success!
             </h4>
             <div className="flex align-baseline justify-start gap-10 items-center">
