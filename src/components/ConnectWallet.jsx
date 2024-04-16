@@ -6,7 +6,7 @@ export default function ConnectWallet(props) {
     <>
       <div>
         <SubNav connectMetamask={props} />
-        <div className="px-44 h-[80vh] flex items-center justify-between">
+        <div className="px-32 h-[80vh] flex items-center justify-between">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -16,16 +16,16 @@ export default function ConnectWallet(props) {
               hidden: { opacity: 0, x: -150 },
             }}
           >
-            <h1 className="text-white text-6xl w-[750px] font-extrabold">
+            <h1 className="text-white text-6xl w-[68%] font-extrabold">
               <span className="inline-block mb-5">Now</span>
               <br></br>
               <span className="inline-block mb-5 text-[#55C8ED]">
                 Everyone <span className="text-white"> Gets a</span>
               </span>
-              <span className="inline-block mb-8">Chance to Learn🚀</span>
+              <span className="inline-block mb-8">Chance to Learn 🚀</span>
             </h1>
 
-            <h4 className="text-white w-[700px] mb-10 font-medium text-xl">
+            <h4 className="text-white w-[75%] mb-10 font-medium text-xl">
               Spark academic dreams with our blockchain-powered Studentfunding
               DApp, igniting innovation and empowering student success!
             </h4>
@@ -43,7 +43,7 @@ export default function ConnectWallet(props) {
             </div>
           </motion.div>
           <motion.div
-            className=""
+            className="w-[32%]"
             initial="hidden"
             whileInView="visible"
             transition={{ duration: 1.5 }}
@@ -55,7 +55,7 @@ export default function ConnectWallet(props) {
             <img
               src={HeroLogo}
               alt=""
-              className="absolute bottom-0 right-0 px-20"
+              className="absolute bottom-0 right-0 px-20 h-[45rem]"
             />
           </motion.div>
         </div>

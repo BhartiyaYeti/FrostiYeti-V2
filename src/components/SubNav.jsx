@@ -6,7 +6,7 @@ import EdbucksLogo from "../assets/edBucksLogo.svg";
 const SubNav = (props) => {
   console.log(props.connectMetamask.connectMetamask);
   return (
-    <nav className="flex justify-between items-center px-16 py-5 ">
+    <nav className="flex justify-between items-center px-16 py-8 ">
       <motion.div
         initial="hidden"
         whileInView="visible"
