@@ -1,4 +1,4 @@
-# EduLink - Empowering Crowdfunding on Educational Grant with Avalanche Blockchain
+# EdBucks - Empowering Crowdfunding on Educational Grant with Avalanche Blockchain
 
 ## Introduction
 
